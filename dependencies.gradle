@@ -1,0 +1,27 @@
+ext.dependencies = [
+    junit: [
+        jupiterApi: 'org.junit.jupiter:junit-jupiter-api:5.2.0',
+        jupiterEngine: 'org.junit.jupiter:junit-jupiter-engine:5.2.0',
+        platform: 'org.junit.platform:junit-platform-runner:1.2.0',
+        launcher: 'org.junit.platform:junit-platform-runner:1.2.0',
+    ],
+
+    mockito: 'org.mockito:mockito-core:2.18.3',
+
+    assertk: 'com.willowtreeapps.assertk:assertk:0.10',
+
+    rxJava: 'io.reactivex.rxjava2:rxjava:2.1.12',
+
+    rxKotlin: 'io.reactivex.rxjava2:rxkotlin:2.2.0',
+
+    gson: 'com.google.code.gson:gson:2.8.2',
+
+    kotlinStandardLibrary: 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.50',
+
+    dagger: [
+        runtime: 'com.google.dagger:dagger:2.15',
+        compiler: 'com.google.dagger:dagger-compiler:2.15'
+    ],
+
+    jsr250: 'javax.annotation:jsr250-api:1.0'
+]
