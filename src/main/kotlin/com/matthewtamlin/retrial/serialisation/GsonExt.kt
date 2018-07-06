@@ -1,4 +1,4 @@
-package serialisation
+package com.matthewtamlin.retrial.serialisation
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
