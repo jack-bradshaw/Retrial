@@ -16,7 +16,7 @@ ext.dependencies = [
 
     gson: 'com.google.code.gson:gson:2.8.2',
 
-    kotlinStandardLibrary: 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.50',
+    kotlinStandardLibrary: 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.51',
 
     dagger: [
         runtime: 'com.google.dagger:dagger:2.15',
