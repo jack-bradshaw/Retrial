@@ -49,9 +49,7 @@ dependencies {
   testCompileOnly gradleTestKit()
 
   testImplementation deps.junit.jupiterApi
-  testRuntime deps.junit.jupiterEngine
-  testRuntime deps.junit.platform
-  testRuntime deps.junit.launcher
+  testRuntimeOnly deps.junit.jupiterEngine
 
   testImplementation deps.mockito
 
