@@ -53,6 +53,8 @@ dependencies {
 
   testImplementation deps.mockito
 
+  testImplementation deps.mockitoKotlin
+
   testImplementation deps.assertk
 }
 
