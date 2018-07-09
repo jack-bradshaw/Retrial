@@ -2,7 +2,6 @@ package com.matthewtamlin.retrial.core
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import java.io.File
 import javax.inject.Inject
 import com.matthewtamlin.retrial.core.recorddependencies.TaskRunner as RecordDependenciesTaskRunner
 import com.matthewtamlin.retrial.core.verifydependencies.TaskRunner as VerifyDependenciesTaskRunner
@@ -37,13 +36,9 @@ open class RetrialPlugin : Plugin<Project> {
     project.task("verifyDependencies")
   }
 
-  private fun registerConfiguration() {
-    project.extensions.add("retrial", RetrialPluginConfiguration::class.java)
-  }
+  private fun registerConfiguration() = project.extensions.add("retrial", RetrialPluginConfiguration::class.java)
 
-  private fun getChecksumsFile(): File {
-    return configuration.checksumFile ?: project.file("./retrial-checksums.json")
-  }
+  private fun getChecksumsFile() = configuration.checksumFile ?: project.file("./retrial-checksums.json")
 
   private fun exposeVerifyDependenciesTask() {
     project.task("verifyDependencyChecksums").doLast {
