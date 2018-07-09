@@ -30,8 +30,8 @@ open class RetrialPlugin : Plugin<Project> {
         .build()
         .inject(this)
 
-    exposeVerifyDependenciesTask()
-    exposeRecordDependenciesTask()
+    registerVerifyDependenciesTask()
+    registerRecordDependenciesTask()
 
     project.task("verifyDependencies")
   }
@@ -40,13 +40,13 @@ open class RetrialPlugin : Plugin<Project> {
 
   private fun getChecksumsFile() = configuration.checksumFile ?: project.file("./retrial-checksums.json")
 
-  private fun exposeVerifyDependenciesTask() {
+  private fun registerVerifyDependenciesTask() {
     project.task("verifyDependencyChecksums").doLast {
       verifyDependenciesTaskRunner.createTask().subscribe()
     }
   }
 
-  private fun exposeRecordDependenciesTask() {
+  private fun registerRecordDependenciesTask() {
     project.task("recordDependencyChecksums").doLast {
       recordDependenciesTaskRunner.createTask().subscribe()
     }
