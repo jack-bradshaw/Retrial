@@ -16,6 +16,9 @@ open class RetrialPlugin : Plugin<Project> {
   @Inject
   lateinit var verifyDependenciesTaskRunner: VerifyDependenciesTaskRunner
 
+  @Inject
+  lateinit var configuration: RetrialPluginConfiguration
+
   override fun apply(project: Project) {
     this.project = project
 
@@ -35,8 +38,6 @@ open class RetrialPlugin : Plugin<Project> {
   }
 
   private fun getChecksumsFile(): File {
-    val configuration = project.extensions.getByType(RetrialPluginConfiguration::class.java)
-
     return configuration.checksumFile ?: project.file("./retrial-checksums.json")
   }
 

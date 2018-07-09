@@ -4,8 +4,8 @@ import com.matthewtamlin.retrial.checksum.ChecksumGeneratorModule
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepositoryModule
 import com.matthewtamlin.retrial.dependencies.saved.DependencyDatabaseFile
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependenciesRepositoryModule
-import com.matthewtamlin.retrial.serialisation.GsonModule
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependencySerialiserModule
+import com.matthewtamlin.retrial.serialisation.GsonModule
 import dagger.BindsInstance
 import dagger.Component
 import org.gradle.api.Project
@@ -27,7 +27,8 @@ import com.matthewtamlin.retrial.core.verifydependencies.TaskRunnerModule as Ver
       LoggerModule::class, LiveDependenciesRepositoryModule::class,
       SavedDependenciesRepositoryModule::class,
       GsonModule::class,
-      SavedDependencySerialiserModule::class])
+      SavedDependencySerialiserModule::class,
+      RetrialPluginConfigurationModule::class])
 @Singleton
 interface CoreComponent {
   fun inject(plugin: RetrialPlugin)
