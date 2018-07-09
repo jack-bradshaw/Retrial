@@ -56,6 +56,10 @@ dependencies {
   testImplementation deps.assertk
 }
 
+test {
+  useJUnitPlatform()
+}
+
 compileKotlin {
   kotlinOptions.jvmTarget = "1.8"
 }
