@@ -22,7 +22,7 @@ open class RetrialPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     this.project = project
 
-    project.extensions.add("retrial", RetrialPluginConfiguration::class.java)
+    registerConfiguration()
 
     DaggerCoreComponent
         .builder()
@@ -35,6 +35,10 @@ open class RetrialPlugin : Plugin<Project> {
     exposeRecordDependenciesTask()
 
     project.task("verifyDependencies")
+  }
+
+  private fun registerConfiguration() {
+    project.extensions.add("retrial", RetrialPluginConfiguration::class.java)
   }
 
   private fun getChecksumsFile(): File {
