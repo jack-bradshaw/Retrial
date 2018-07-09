@@ -49,6 +49,8 @@ dependencies {
   testImplementation deps.junit.jupiterApi
   testRuntimeOnly deps.junit.jupiterEngine
 
+  testImplementation deps.junitExtensions
+
   testImplementation deps.mockito
 
   testImplementation deps.mockitoKotlin
