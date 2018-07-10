@@ -4,6 +4,6 @@ import io.reactivex.Completable
 
 class Crasher {
   fun failBuild() = Completable.fromRunnable {
-    throw RuntimeException()
+    throw RuntimeException("Task execution failed. See logs for details.")
   }
 }
