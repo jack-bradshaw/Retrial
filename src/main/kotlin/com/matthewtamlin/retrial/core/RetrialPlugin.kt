@@ -9,19 +9,20 @@ import com.matthewtamlin.retrial.core.verifydependencies.TaskRunner as VerifyDep
 open class RetrialPlugin : Plugin<Project> {
   private lateinit var project: Project
 
+  private lateinit var configuration: RetrialPluginConfiguration
+
   @Inject
   lateinit var recordDependenciesTaskRunner: RecordDependenciesTaskRunner
 
   @Inject
   lateinit var verifyDependenciesTaskRunner: VerifyDependenciesTaskRunner
 
-  @Inject
-  lateinit var configuration: RetrialPluginConfiguration
-
   override fun apply(project: Project) {
     this.project = project
 
     registerConfiguration()
+
+    configuration = project.extensions.getByType(RetrialPluginConfiguration::class.java)
 
     DaggerCoreComponent
         .builder()
