@@ -42,13 +42,13 @@ open class RetrialPlugin : Plugin<Project> {
 
   private fun registerVerifyDependenciesTask() {
     project.task("verifyDependencyChecksums").doLast {
-      verifyDependenciesTaskRunner.createTask().subscribe()
+      verifyDependenciesTaskRunner.run().subscribe()
     }
   }
 
   private fun registerRecordDependenciesTask() {
     project.task("recordDependencyChecksums").doLast {
-      recordDependenciesTaskRunner.createTask().subscribe()
+      recordDependenciesTaskRunner.run().subscribe()
     }
   }
 }

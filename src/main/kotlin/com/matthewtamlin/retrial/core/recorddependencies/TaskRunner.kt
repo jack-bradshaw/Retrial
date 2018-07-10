@@ -16,7 +16,7 @@ class TaskRunner(
     private val crasher: Crasher
 ) : TaskRunner {
 
-  override fun createTask() = liveDependenciesRepository
+  override fun run() = liveDependenciesRepository
       .get()
       .flatMapObservable { Observable.fromIterable(it) }
       .flatMapSingle { dependency ->
