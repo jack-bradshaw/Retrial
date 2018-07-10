@@ -11,23 +11,27 @@ class FileBasedSavedDependenciesRepository @Inject constructor(
     private val serialiser: SavedDependencySerialiser
 ) : SavedDependenciesRepository {
 
-  override fun get(): Single<Set<SavedDependency>> = Single.fromCallable {
+  override fun get(): Single<Set<SavedDependency>> = Single.defer {
     if (!file.exists()) {
-      HashSet<SavedDependency>()
+      Single.just(HashSet())
     } else {
-      HashSet(serialiser.deserialise(file.readText()))
+      serialiser.deserialise(file.readText())
     }
   }
 
-  override fun set(dependencies: Set<SavedDependency>): Completable = Completable.fromRunnable {
+  override fun set(dependencies: Set<SavedDependency>): Completable {
+    return ensureFileExists()
+        .andThen(serialiser.serialise(dependencies))
+        .flatMapCompletable(::saveDependenciesToFile)
+  }
+
+  private fun ensureFileExists() = Completable.fromRunnable {
     if (!file.exists()) {
-      setupFile()
+      file.createNewFile().also { success -> if (!success) throw IOException("Unable to create $file.") }
     }
-
-    file.writeText(serialiser.serialise(dependencies))
   }
 
-  private fun setupFile() {
-    file.createNewFile().also { success -> if (!success) throw IOException("Unable to create $file.") }
+  private fun saveDependenciesToFile(serialisedDependencies: String) = Completable.fromRunnable {
+    file.writeText(serialisedDependencies)
   }
 }
