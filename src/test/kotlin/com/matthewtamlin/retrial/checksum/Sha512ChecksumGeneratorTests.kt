@@ -21,7 +21,6 @@ class Sha512ChecksumGeneratorTests {
   @BeforeEach
   fun setup(temporaryFolder: TemporaryFolder) {
     file = temporaryFolder.createFile("temporary file")
-
     generator = Sha512ChecksumGenerator()
   }
 
