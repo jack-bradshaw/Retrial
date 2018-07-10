@@ -21,7 +21,7 @@ class TaskRunner(
     private val crasher: Crasher
 ) : TaskRunner {
 
-  override fun createTask() = Single
+  override fun run() = Single
       .zip(
           getSavedDependencies(),
           getLiveDependencies(),
