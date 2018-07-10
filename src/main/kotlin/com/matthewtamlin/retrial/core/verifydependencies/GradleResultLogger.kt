@@ -11,19 +11,19 @@ class GradleResultLogger(private val logger: Logger): ResultLogger {
         .appendln("Dependency verification failed.")
         .apply {
           if (!diff.additionalDependencies.isEmpty()) {
-            appendln("\tAdditional com.matthewtamlin.retrial.dependencies:")
+            appendln("\tAdditional dependencies:")
 
             diff.additionalDependencies.forEach { appendln("\t\t$it") }
           }
 
           if (!diff.missingDependencies.isEmpty()) {
-            appendln("\tMissing com.matthewtamlin.retrial.dependencies:")
+            appendln("\tMissing dependencies:")
 
             diff.additionalDependencies.forEach { appendln("\t\t$it") }
           }
 
           if (!diff.additionalDependencies.isEmpty()) {
-            appendln("\tChanged com.matthewtamlin.retrial.dependencies:")
+            appendln("\tChanged dependencies:")
 
             diff.additionalDependencies.forEach { appendln("\t\t$it") }
           }
