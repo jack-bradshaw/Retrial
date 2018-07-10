@@ -19,13 +19,13 @@ class GradleResultLogger(private val logger: Logger): ResultLogger {
           if (!diff.missingDependencies.isEmpty()) {
             appendln("\tMissing dependencies:")
 
-            diff.additionalDependencies.forEach { appendln("\t\t$it") }
+            diff.missingDependencies.forEach { appendln("\t\t$it") }
           }
 
-          if (!diff.additionalDependencies.isEmpty()) {
+          if (!diff.changedDependencies.isEmpty()) {
             appendln("\tChanged dependencies:")
 
-            diff.additionalDependencies.forEach { appendln("\t\t$it") }
+            diff.changedDependencies.forEach { appendln("\t\t$it") }
           }
         }
         .toString()
