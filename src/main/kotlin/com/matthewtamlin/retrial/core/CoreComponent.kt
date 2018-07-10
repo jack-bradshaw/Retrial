@@ -27,8 +27,7 @@ import com.matthewtamlin.retrial.core.verifydependencies.TaskRunnerModule as Ver
       LoggerModule::class, LiveDependenciesRepositoryModule::class,
       SavedDependenciesRepositoryModule::class,
       GsonModule::class,
-      SavedDependencySerialiserModule::class,
-      RetrialPluginConfigurationModule::class])
+      SavedDependencySerialiserModule::class])
 @Singleton
 interface CoreComponent {
   fun inject(plugin: RetrialPlugin)
