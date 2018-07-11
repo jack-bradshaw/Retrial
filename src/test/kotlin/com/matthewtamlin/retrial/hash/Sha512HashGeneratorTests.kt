@@ -12,16 +12,16 @@ import java.io.File
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 @ExtendWith(TemporaryFolderExtension::class)
-class Sha512ChecksumGeneratorTests {
+class Sha512HashGeneratorTests {
 
   private lateinit var file: File
 
-  private lateinit var generator: Sha512ChecksumGenerator
+  private lateinit var generator: Sha512HashGenerator
 
   @BeforeEach
   fun setup(temporaryFolder: TemporaryFolder) {
     file = temporaryFolder.createFile("temporary file")
-    generator = Sha512ChecksumGenerator()
+    generator = Sha512HashGenerator()
   }
 
   @Nested
@@ -43,7 +43,7 @@ class Sha512ChecksumGeneratorTests {
       val input = "A"
 
       val checksum =
-          Sha512Checksum("21B4F4BD9E64ED355C3EB676A28EBEDAF6D8F17BDC365995B319097153044080516BD083BFCCE66121A3072646994C8430CC382B8DC543E84880183BF856CFF5")
+          Sha512Hash("21B4F4BD9E64ED355C3EB676A28EBEDAF6D8F17BDC365995B319097153044080516BD083BFCCE66121A3072646994C8430CC382B8DC543E84880183BF856CFF5")
 
       file.writeText(input)
 

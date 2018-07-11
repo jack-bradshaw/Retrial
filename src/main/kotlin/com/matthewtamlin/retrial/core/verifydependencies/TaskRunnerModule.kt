@@ -1,6 +1,6 @@
 package com.matthewtamlin.retrial.core.verifydependencies
 
-import com.matthewtamlin.retrial.hash.Sha512ChecksumGenerator
+import com.matthewtamlin.retrial.hash.Sha512HashGenerator
 import dagger.Module
 import dagger.Provides
 import com.matthewtamlin.retrial.dependencies.live.ProjectBasedLiveDependenciesRepository
@@ -14,7 +14,7 @@ class TaskRunnerModule {
   fun provideTaskRunner(
       savedDependenciesRepository: SavedDependenciesRepository,
       liveDependenciesRepository: ProjectBasedLiveDependenciesRepository,
-      checksumGenerator: Sha512ChecksumGenerator,
+      hashGenerator: Sha512HashGenerator,
       resultLogger: ResultLogger
-  ) = TaskRunner(savedDependenciesRepository, liveDependenciesRepository, checksumGenerator, resultLogger)
+  ) = TaskRunner(savedDependenciesRepository, liveDependenciesRepository, hashGenerator, resultLogger)
 }

@@ -1,6 +1,6 @@
 package com.matthewtamlin.retrial.core.recorddependencies
 
-import com.matthewtamlin.retrial.hash.Sha512ChecksumGenerator
+import com.matthewtamlin.retrial.hash.Sha512HashGenerator
 import com.matthewtamlin.retrial.core.TaskRunner
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepository
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependenciesRepository
@@ -10,14 +10,14 @@ import io.reactivex.Observable
 class TaskRunner(
     private val savedDependenciesRepository: SavedDependenciesRepository,
     private val liveDependenciesRepository: LiveDependenciesRepository,
-    private val checksumGenerator: Sha512ChecksumGenerator
+    private val hashGenerator: Sha512HashGenerator
 ) : TaskRunner {
 
   override fun run() = liveDependenciesRepository
       .get()
       .flatMapObservable { Observable.fromIterable(it) }
       .flatMapSingle { dependency ->
-        checksumGenerator
+        hashGenerator
             .generateChecksum(dependency.file)
             .map { checksum -> SavedDependency(dependency.key, checksum) }
       }
