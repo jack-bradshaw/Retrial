@@ -2,7 +2,6 @@ package com.matthewtamlin.retrial.core.verifydependencies
 
 import com.matthewtamlin.retrial.checksum.Sha512Checksum
 import com.matthewtamlin.retrial.checksum.Sha512ChecksumGenerator
-import com.matthewtamlin.retrial.core.Crasher
 import com.matthewtamlin.retrial.core.TaskRunner
 import com.matthewtamlin.retrial.dependencies.DependencyKey
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepository
@@ -17,8 +16,7 @@ class TaskRunner(
     private val savedDependenciesRepository: SavedDependenciesRepository,
     private val liveDependenciesRepository: LiveDependenciesRepository,
     private val checksumGenerator: Sha512ChecksumGenerator,
-    private val resultLogger: ResultLogger,
-    private val crasher: Crasher
+    private val resultLogger: ResultLogger
 ) : TaskRunner {
 
   override fun run() = Single
@@ -62,7 +60,9 @@ class TaskRunner(
     if (diff.successful) {
       resultLogger.logSuccess()
     } else {
-      resultLogger.logFailureDueTo(diff).andThen(crasher.failBuild())
+      resultLogger
+          .logFailureDueTo(diff)
+          .doOnComplete { throw VerificationFailedException() }
     }
   }
 }
