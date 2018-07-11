@@ -1,0 +1,112 @@
+/*
+ * Copyright 2018 Matthew Tamlin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'maven'
+
+def localReleaseDirectory = "${buildDir}/release/${project.version}"
+
+task zipRelease(type: Zip) {
+  from localReleaseDirectory
+  destinationDir buildDir
+  archiveName "release-${version}.zip"
+}
+
+task buildRelease(dependsOn: ['uploadArchives', 'zipRelease']) {
+  doLast {
+    println "Release \'$project.group:$project.ext.artifactId:$version\' can be found at ${localReleaseDirectory}/"
+  }
+}
+
+afterEvaluate { project ->
+  uploadArchives {
+    repositories {
+      mavenDeployer {
+        repository(url: "file://${localReleaseDirectory}")
+
+        pom.groupId = project.group
+        pom.artifactId = project.ext.artifactId
+        pom.version = project.version
+
+        pom.project {
+          name project.ext.name
+          packaging 'jar'
+          description project.ext.description
+          url project.ext.url
+
+          licenses {
+            license {
+              name project.ext.license.name
+              url project.ext.license.url
+            }
+          }
+
+          scm {
+            url project.ext.url
+          }
+        }
+      }
+    }
+  }
+
+  install {
+    repositories.mavenInstaller {
+      pom.groupId = project.group
+      pom.artifactId = project.artifactId
+      pom.version = project.version
+
+      pom.project {
+        name project.ext.name
+        packaging 'jar'
+        description project.ext.description
+        url project.ext.url
+
+        licenses {
+          license {
+            name project.ext.license.name
+            url project.ext.license.url
+          }
+        }
+
+        scm {
+          url project.ext.url
+        }
+      }
+    }
+  }
+
+  task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+  }
+
+  task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+  }
+
+  if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+      tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+      }
+    }
+  }
+
+  artifacts {
+    archives sourcesJar
+    archives javadocJar
+  }
+}
