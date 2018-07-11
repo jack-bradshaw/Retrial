@@ -16,7 +16,6 @@ class TaskRunnerModule {
       savedDependenciesRepository: SavedDependenciesRepository,
       liveDependenciesRepository: ProjectBasedLiveDependenciesRepository,
       checksumGenerator: Sha512ChecksumGenerator,
-      resultLogger: ResultLogger,
       crasher: Crasher
-  ) = TaskRunner(savedDependenciesRepository, liveDependenciesRepository, checksumGenerator, resultLogger, crasher)
+  ) = TaskRunner(savedDependenciesRepository, liveDependenciesRepository, checksumGenerator)
 }
