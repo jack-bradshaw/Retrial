@@ -3,7 +3,7 @@ package com.matthewtamlin.retrial.core
 import java.io.File
 
 /**
- * Provides configuration control for the Retrial plugin.
+ * Provides configuration options for the Retrial plugin.
  */
 open class RetrialPluginConfiguration {
   /**
