@@ -11,7 +11,6 @@ import dagger.Component
 import org.gradle.api.Project
 import java.io.File
 import javax.inject.Singleton
-import com.matthewtamlin.retrial.core.recorddependencies.ResultLoggerModule as RecordDependenciesResultLoggerModule
 import com.matthewtamlin.retrial.core.recorddependencies.TaskRunnerModule as RecordDependenciesTaskRunnerModule
 import com.matthewtamlin.retrial.core.verifydependencies.ResultLoggerModule as VerifyDependenciesResultLoggerModule
 import com.matthewtamlin.retrial.core.verifydependencies.TaskRunnerModule as VerifyDependenciesTaskRunnerModule
@@ -20,7 +19,6 @@ import com.matthewtamlin.retrial.core.verifydependencies.TaskRunnerModule as Ver
     modules = [
       ChecksumGeneratorModule::class,
       RecordDependenciesTaskRunnerModule::class,
-      RecordDependenciesResultLoggerModule::class,
       VerifyDependenciesTaskRunnerModule::class,
       VerifyDependenciesResultLoggerModule::class,
       CrasherModule::class,
