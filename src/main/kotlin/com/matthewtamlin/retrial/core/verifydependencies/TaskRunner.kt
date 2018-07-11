@@ -1,7 +1,7 @@
 package com.matthewtamlin.retrial.core.verifydependencies
 
-import com.matthewtamlin.retrial.hash.Sha512Checksum
-import com.matthewtamlin.retrial.hash.Sha512ChecksumGenerator
+import com.matthewtamlin.retrial.hash.Sha512Hash
+import com.matthewtamlin.retrial.hash.Sha512HashGenerator
 import com.matthewtamlin.retrial.core.TaskRunner
 import com.matthewtamlin.retrial.dependencies.DependencyKey
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepository
@@ -15,7 +15,7 @@ import io.reactivex.rxkotlin.toMap
 class TaskRunner(
     private val savedDependenciesRepository: SavedDependenciesRepository,
     private val liveDependenciesRepository: LiveDependenciesRepository,
-    private val checksumGenerator: Sha512ChecksumGenerator,
+    private val hashGenerator: Sha512HashGenerator,
     private val resultLogger: ResultLogger
 ) : TaskRunner {
 
@@ -26,17 +26,17 @@ class TaskRunner(
           BiFunction(::compareDependencies))
       .flatMapCompletable { handleResult(it) }
 
-  private fun getSavedDependencies(): Single<Map<DependencyKey, Sha512Checksum>> = savedDependenciesRepository
+  private fun getSavedDependencies(): Single<Map<DependencyKey, Sha512Hash>> = savedDependenciesRepository
       .get()
       .flatMapObservable { Observable.fromIterable(it) }
-      .map { Pair(it.key, it.checksum) }
+      .map { Pair(it.key, it.hash) }
       .toMap()
 
-  private fun getLiveDependencies(): Single<Map<DependencyKey, Sha512Checksum>> = liveDependenciesRepository
+  private fun getLiveDependencies(): Single<Map<DependencyKey, Sha512Hash>> = liveDependenciesRepository
       .get()
       .flatMapObservable { Observable.fromIterable(it) }
       .flatMapSingle { dependency ->
-        checksumGenerator
+        hashGenerator
             .generateChecksum(dependency.file)
             .map { checksum -> Pair(dependency, checksum) }
             .map { Pair(it.first.key, it.second) } // Only need the key, not the rest of the dependency
@@ -44,8 +44,8 @@ class TaskRunner(
       .toMap()
 
   private fun compareDependencies(
-      saved: Map<DependencyKey, Sha512Checksum>,
-      live: Map<DependencyKey, Sha512Checksum>
+      saved: Map<DependencyKey, Sha512Hash>,
+      live: Map<DependencyKey, Sha512Hash>
   ): DependencyDiff {
 
     val additional = live.keys - saved.keys

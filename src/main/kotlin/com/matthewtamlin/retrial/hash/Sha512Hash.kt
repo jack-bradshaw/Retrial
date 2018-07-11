@@ -5,4 +5,4 @@ package com.matthewtamlin.retrial.hash
  *
  * @property value the literal value of the hash
  */
-data class Sha512Checksum(val value: String)
+data class Sha512Hash(val value: String)

@@ -1,7 +1,7 @@
 package com.matthewtamlin.retrial.core.verifydependencies
 
-import com.matthewtamlin.retrial.hash.Sha512Checksum
-import com.matthewtamlin.retrial.hash.Sha512ChecksumGenerator
+import com.matthewtamlin.retrial.hash.Sha512Hash
+import com.matthewtamlin.retrial.hash.Sha512HashGenerator
 import com.matthewtamlin.retrial.dependencies.DependencyKey
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepository
 import com.matthewtamlin.retrial.dependencies.live.LiveDependency
@@ -29,7 +29,7 @@ class TaskRunnerTests {
 
   private val liveDependenciesRepository = mock(LiveDependenciesRepository::class.java)
 
-  private val checksumGenerator = mock(Sha512ChecksumGenerator::class.java)
+  private val checksumGenerator = mock(Sha512HashGenerator::class.java)
 
   private val logger = mock(ResultLogger::class.java)
 
@@ -63,9 +63,9 @@ class TaskRunnerTests {
     val dependencyKeyB = mock(DependencyKey::class.java)
     val dependencyKeyC = mock(DependencyKey::class.java)
 
-    val dependencyAChecksum = Sha512Checksum("A")
-    val dependencyBChecksum = Sha512Checksum("B")
-    val dependencyCChecksum = Sha512Checksum("C")
+    val dependencyAChecksum = Sha512Hash("A")
+    val dependencyBChecksum = Sha512Hash("B")
+    val dependencyCChecksum = Sha512Hash("C")
 
     liveDependencyA = LiveDependency(dependencyKeyA, mock(File::class.java))
     liveDependencyB = LiveDependency(dependencyKeyB, mock(File::class.java))
@@ -84,11 +84,11 @@ class TaskRunnerTests {
     whenever(checksumGenerator.generateChecksum(liveDependencyC.file)).thenReturn(Single.just(dependencyCChecksum))
 
     whenever(checksumGenerator.generateChecksum(modifiedLiveDependencyA.file))
-        .thenReturn(Single.just(Sha512Checksum("A modified")))
+        .thenReturn(Single.just(Sha512Hash("A modified")))
     whenever(checksumGenerator.generateChecksum(modifiedLiveDependencyB.file))
-        .thenReturn(Single.just(Sha512Checksum("B modified")))
+        .thenReturn(Single.just(Sha512Hash("B modified")))
     whenever(checksumGenerator.generateChecksum(modifiedLiveDependencyC.file))
-        .thenReturn(Single.just(Sha512Checksum("C modified")))
+        .thenReturn(Single.just(Sha512Hash("C modified")))
 
     whenever(logger.logSuccess()).thenReturn(Completable.complete())
     whenever(logger.logFailureDueTo(any())).thenReturn(Completable.complete())

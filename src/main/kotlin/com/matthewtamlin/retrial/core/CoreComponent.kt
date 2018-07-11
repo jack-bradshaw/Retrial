@@ -1,6 +1,6 @@
 package com.matthewtamlin.retrial.core
 
-import com.matthewtamlin.retrial.hash.Sha512ChecksumGeneratorModule
+import com.matthewtamlin.retrial.hash.Sha512HashGeneratorModule
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepositoryModule
 import com.matthewtamlin.retrial.dependencies.saved.DependencyDatabaseFile
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependenciesRepositoryModule
@@ -17,7 +17,7 @@ import com.matthewtamlin.retrial.core.verifydependencies.TaskRunnerModule as Ver
 
 @Component(
     modules = [
-      Sha512ChecksumGeneratorModule::class,
+      Sha512HashGeneratorModule::class,
       RecordDependenciesTaskRunnerModule::class,
       VerifyDependenciesTaskRunnerModule::class,
       VerifyDependenciesResultLoggerModule::class,

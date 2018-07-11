@@ -1,6 +1,6 @@
 package com.matthewtamlin.retrial.core.recorddependencies
 
-import com.matthewtamlin.retrial.hash.Sha512ChecksumGenerator
+import com.matthewtamlin.retrial.hash.Sha512HashGenerator
 import com.matthewtamlin.retrial.core.Crasher
 import com.matthewtamlin.retrial.dependencies.live.ProjectBasedLiveDependenciesRepository
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependenciesRepository
@@ -15,7 +15,7 @@ class TaskRunnerModule {
   fun provideTaskRunner(
       savedDependenciesRepository: SavedDependenciesRepository,
       liveDependenciesRepository: ProjectBasedLiveDependenciesRepository,
-      checksumGenerator: Sha512ChecksumGenerator,
+      hashGenerator: Sha512HashGenerator,
       crasher: Crasher
-  ) = TaskRunner(savedDependenciesRepository, liveDependenciesRepository, checksumGenerator)
+  ) = TaskRunner(savedDependenciesRepository, liveDependenciesRepository, hashGenerator)
 }

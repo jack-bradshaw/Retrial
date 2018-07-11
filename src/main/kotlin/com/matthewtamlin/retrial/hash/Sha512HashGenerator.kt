@@ -7,12 +7,12 @@ import java.security.MessageDigest
 import javax.inject.Provider
 
 
-class Sha512ChecksumGenerator {
+class Sha512HashGenerator {
   private val sha512DigestProvider: Provider<MessageDigest> = Provider { MessageDigest.getInstance("SHA-512") }
 
   fun generateChecksum(file: File) = Single.fromCallable {
     if (file.length() == 0L) {
-      throw RuntimeException("Cannot calculate checksum for empty file.")
+      throw RuntimeException("Cannot calculate hash for empty file.")
     }
 
     sha512DigestProvider
@@ -21,7 +21,7 @@ class Sha512ChecksumGenerator {
         .map { toHexString(it) }
         .map { it.toUpperCase() }
         .joinToString(separator = "")
-        .let { Sha512Checksum(it) }
+        .let { Sha512Hash(it) }
   }
 
   private fun toHexString(number: Byte) = String.format("%02x", number)

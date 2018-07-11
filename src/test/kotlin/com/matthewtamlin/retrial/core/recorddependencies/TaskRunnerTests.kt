@@ -1,7 +1,7 @@
 package com.matthewtamlin.retrial.core.recorddependencies
 
-import com.matthewtamlin.retrial.hash.Sha512Checksum
-import com.matthewtamlin.retrial.hash.Sha512ChecksumGenerator
+import com.matthewtamlin.retrial.hash.Sha512Hash
+import com.matthewtamlin.retrial.hash.Sha512HashGenerator
 import com.matthewtamlin.retrial.dependencies.DependencyKey
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepository
 import com.matthewtamlin.retrial.dependencies.live.LiveDependency
@@ -28,7 +28,7 @@ class TaskRunnerTests {
 
   private val liveDependenciesRepository = Mockito.mock(LiveDependenciesRepository::class.java)
 
-  private val checksumGenerator = Mockito.mock(Sha512ChecksumGenerator::class.java)
+  private val checksumGenerator = Mockito.mock(Sha512HashGenerator::class.java)
 
   private val taskRunner = TaskRunner(
       savedDependenciesRepository,
@@ -48,8 +48,8 @@ class TaskRunnerTests {
     val dependencyKeyA = Mockito.mock(DependencyKey::class.java)
     val dependencyKeyB = Mockito.mock(DependencyKey::class.java)
 
-    val dependencyAChecksum = Sha512Checksum("A")
-    val dependencyBChecksum = Sha512Checksum("B")
+    val dependencyAChecksum = Sha512Hash("A")
+    val dependencyBChecksum = Sha512Hash("B")
 
     liveDependencyA = LiveDependency(dependencyKeyA, Mockito.mock(File::class.java))
     liveDependencyB = LiveDependency(dependencyKeyB, Mockito.mock(File::class.java))
