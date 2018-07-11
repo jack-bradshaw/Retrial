@@ -33,8 +33,6 @@ open class RetrialPlugin : Plugin<Project> {
 
     registerVerifyDependenciesTask()
     registerRecordDependenciesTask()
-
-    project.task("verifyDependencies")
   }
 
   private fun registerConfiguration() = project.extensions.add("retrial", RetrialPluginConfiguration::class.java)
