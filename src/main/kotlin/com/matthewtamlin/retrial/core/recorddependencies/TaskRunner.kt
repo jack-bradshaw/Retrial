@@ -7,6 +7,9 @@ import com.matthewtamlin.retrial.dependencies.saved.SavedDependenciesRepository
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependency
 import io.reactivex.Observable
 
+/**
+ * Runners the record dependencies task.
+ */
 class TaskRunner(
     private val savedDependenciesRepository: SavedDependenciesRepository,
     private val liveDependenciesRepository: LiveDependenciesRepository,
