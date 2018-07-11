@@ -1,7 +1,6 @@
 package com.matthewtamlin.retrial.core.recorddependencies
 
 import com.matthewtamlin.retrial.checksum.Sha512ChecksumGenerator
-import com.matthewtamlin.retrial.core.Crasher
 import com.matthewtamlin.retrial.core.TaskRunner
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepository
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependenciesRepository
@@ -11,9 +10,7 @@ import io.reactivex.Observable
 class TaskRunner(
     private val savedDependenciesRepository: SavedDependenciesRepository,
     private val liveDependenciesRepository: LiveDependenciesRepository,
-    private val checksumGenerator: Sha512ChecksumGenerator,
-    private val resultLogger: ResultLogger,
-    private val crasher: Crasher
+    private val checksumGenerator: Sha512ChecksumGenerator
 ) : TaskRunner {
 
   override fun run() = liveDependenciesRepository
@@ -26,6 +23,4 @@ class TaskRunner(
       }
       .collectInto(HashSet<SavedDependency>()) { set, dependency -> set.add(dependency) }
       .flatMapCompletable { savedDependenciesRepository.set(it) }
-      .andThen(resultLogger.logSuccess())
-      .onErrorResumeNext { resultLogger.logFailure().andThen(crasher.failBuild()) }
 }
