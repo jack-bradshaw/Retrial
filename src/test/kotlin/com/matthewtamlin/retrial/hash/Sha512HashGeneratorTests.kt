@@ -25,14 +25,14 @@ class Sha512HashGeneratorTests {
   }
 
   @Nested
-  @DisplayName("generateChecksum(File)")
-  inner class TestGenerateChecksum {
+  @DisplayName("generateHash(File)")
+  inner class TestGenerateHash {
 
     @Test
     @DisplayName("should fail when the file is empty")
     fun fileIsEmpty() {
       generator
-          .generateChecksum(file)
+          .generateHash(file)
           .test()
           .assertError(RuntimeException::class.java)
     }
@@ -48,7 +48,7 @@ class Sha512HashGeneratorTests {
       file.writeText(input)
 
       generator
-          .generateChecksum(file)
+          .generateHash(file)
           .test()
           .assertResult(checksum)
     }

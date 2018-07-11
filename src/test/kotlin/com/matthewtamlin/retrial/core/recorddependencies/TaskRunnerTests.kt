@@ -57,8 +57,8 @@ class TaskRunnerTests {
     savedDependencyA = SavedDependency(dependencyKeyA, dependencyAChecksum)
     savedDependencyB = SavedDependency(dependencyKeyB, dependencyBChecksum)
 
-    whenever(checksumGenerator.generateChecksum(liveDependencyA.file)).thenReturn(Single.just(dependencyAChecksum))
-    whenever(checksumGenerator.generateChecksum(liveDependencyB.file)).thenReturn(Single.just(dependencyBChecksum))
+    whenever(checksumGenerator.generateHash(liveDependencyA.file)).thenReturn(Single.just(dependencyAChecksum))
+    whenever(checksumGenerator.generateHash(liveDependencyB.file)).thenReturn(Single.just(dependencyBChecksum))
   }
 
   @Nested

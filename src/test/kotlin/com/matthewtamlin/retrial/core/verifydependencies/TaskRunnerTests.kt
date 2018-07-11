@@ -79,15 +79,15 @@ class TaskRunnerTests {
     savedDependencyB = SavedDependency(dependencyKeyB, dependencyBChecksum)
     savedDependencyC = SavedDependency(dependencyKeyC, dependencyCChecksum)
 
-    whenever(checksumGenerator.generateChecksum(liveDependencyA.file)).thenReturn(Single.just(dependencyAChecksum))
-    whenever(checksumGenerator.generateChecksum(liveDependencyB.file)).thenReturn(Single.just(dependencyBChecksum))
-    whenever(checksumGenerator.generateChecksum(liveDependencyC.file)).thenReturn(Single.just(dependencyCChecksum))
+    whenever(checksumGenerator.generateHash(liveDependencyA.file)).thenReturn(Single.just(dependencyAChecksum))
+    whenever(checksumGenerator.generateHash(liveDependencyB.file)).thenReturn(Single.just(dependencyBChecksum))
+    whenever(checksumGenerator.generateHash(liveDependencyC.file)).thenReturn(Single.just(dependencyCChecksum))
 
-    whenever(checksumGenerator.generateChecksum(modifiedLiveDependencyA.file))
+    whenever(checksumGenerator.generateHash(modifiedLiveDependencyA.file))
         .thenReturn(Single.just(Sha512Hash("A modified")))
-    whenever(checksumGenerator.generateChecksum(modifiedLiveDependencyB.file))
+    whenever(checksumGenerator.generateHash(modifiedLiveDependencyB.file))
         .thenReturn(Single.just(Sha512Hash("B modified")))
-    whenever(checksumGenerator.generateChecksum(modifiedLiveDependencyC.file))
+    whenever(checksumGenerator.generateHash(modifiedLiveDependencyC.file))
         .thenReturn(Single.just(Sha512Hash("C modified")))
 
     whenever(logger.logSuccess()).thenReturn(Completable.complete())

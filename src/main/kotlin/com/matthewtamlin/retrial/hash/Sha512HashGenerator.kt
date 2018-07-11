@@ -15,7 +15,7 @@ class Sha512HashGenerator {
   /**
    * Generates a SHA2-512 hash of the contents of a file.
    */
-  fun generateChecksum(file: File) = Single.fromCallable {
+  fun generateHash(file: File) = Single.fromCallable {
     if (file.length() == 0L) {
       throw RuntimeException("Cannot calculate hash for empty file.")
     }

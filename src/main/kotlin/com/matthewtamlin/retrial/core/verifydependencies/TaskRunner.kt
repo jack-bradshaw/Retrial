@@ -40,7 +40,7 @@ class TaskRunner(
       .flatMapObservable { Observable.fromIterable(it) }
       .flatMapSingle { dependency ->
         hashGenerator
-            .generateChecksum(dependency.file)
+            .generateHash(dependency.file)
             .map { checksum -> Pair(dependency, checksum) }
             .map { Pair(it.first.key, it.second) } // Only need the key, not the rest of the dependency
       }
