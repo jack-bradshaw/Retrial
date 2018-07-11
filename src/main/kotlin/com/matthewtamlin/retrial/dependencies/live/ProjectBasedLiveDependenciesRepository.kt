@@ -7,6 +7,9 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import javax.inject.Inject
 
+/**
+ * [LiveDependenciesRepository] that sources dependencies from [project].
+ */
 class ProjectBasedLiveDependenciesRepository @Inject constructor(
     private val project: Project
 ) : LiveDependenciesRepository {

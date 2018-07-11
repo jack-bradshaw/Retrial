@@ -6,6 +6,9 @@ import java.io.File
 import java.io.IOException
 import javax.inject.Inject
 
+/**
+ * [SavedDependenciesRepository] that saves dependencies in a local file.
+ */
 class FileBasedSavedDependenciesRepository @Inject constructor(
     private val file: File,
     private val serialiser: SavedDependencySerialiser
