@@ -5,7 +5,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class ChecksumGeneratorModule {
+class Sha512ChecksumGeneratorModule {
   @Provides
   @Singleton
   fun provideCompositeShaChecksumGenerator(): Sha512ChecksumGenerator = Sha512ChecksumGenerator()
