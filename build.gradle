@@ -72,3 +72,11 @@ compileTestKotlin {
 
 // Necessary to ensure the gradle plugin definition is included in the shadow jar
 shadowJar.dependsOn(build)
+
+jar {
+  baseName 'intermediate'
+}
+
+shadowJar{
+  archiveName = "retrial.${extension}"
+}
