@@ -21,7 +21,6 @@ import com.matthewtamlin.retrial.core.verifydependencies.TaskRunnerModule as Ver
       RecordDependenciesTaskRunnerModule::class,
       VerifyDependenciesTaskRunnerModule::class,
       VerifyDependenciesResultLoggerModule::class,
-      CrasherModule::class,
       LoggerModule::class, LiveDependenciesRepositoryModule::class,
       SavedDependenciesRepositoryModule::class,
       GsonModule::class,
