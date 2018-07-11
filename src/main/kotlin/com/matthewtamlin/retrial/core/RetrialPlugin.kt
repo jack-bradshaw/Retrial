@@ -13,8 +13,6 @@ import com.matthewtamlin.retrial.core.verifydependencies.TaskRunner as VerifyDep
 open class RetrialPlugin : Plugin<Project> {
   private lateinit var project: Project
 
-  private lateinit var configuration: RetrialPluginConfiguration
-
   @Inject
   lateinit var recordDependenciesTaskRunner: RecordDependenciesTaskRunner
 
