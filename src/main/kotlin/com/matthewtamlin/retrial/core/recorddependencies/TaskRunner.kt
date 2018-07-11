@@ -21,7 +21,7 @@ class TaskRunner(
       .flatMapObservable { Observable.fromIterable(it) }
       .flatMapSingle { dependency ->
         hashGenerator
-            .generateChecksum(dependency.file)
+            .generateHash(dependency.file)
             .map { checksum -> SavedDependency(dependency.key, checksum) }
       }
       .collectInto(HashSet<SavedDependency>()) { set, dependency -> set.add(dependency) }
