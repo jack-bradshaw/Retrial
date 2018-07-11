@@ -42,14 +42,20 @@ open class RetrialPlugin : Plugin<Project> {
   private fun getChecksumsFile() = configuration.checksumFile ?: project.file("./retrial-checksums.json")
 
   private fun registerVerifyDependenciesTask() {
-    project.task("verifyDependencyChecksums").doLast {
-      verifyDependenciesTaskRunner.run().subscribe()
-    }
+    project
+        .task("verifyDependencyChecksums")
+        .apply { group = "retrial" }
+        .doLast {
+          verifyDependenciesTaskRunner.run().subscribe()
+        }
   }
 
   private fun registerRecordDependenciesTask() {
-    project.task("recordDependencyChecksums").doLast {
-      recordDependenciesTaskRunner.run().subscribe()
-    }
+    project
+        .task("recordDependencyChecksums")
+        .apply { group = "retrial" }
+        .doLast {
+          recordDependenciesTaskRunner.run().subscribe()
+        }
   }
 }
