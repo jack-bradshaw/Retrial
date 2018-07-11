@@ -34,14 +34,11 @@ class TaskRunnerTests {
 
   private val logger = mock(ResultLogger::class.java)
 
-  private val crasher = mock(Crasher::class.java)
-
   private val taskRunner = TaskRunner(
       savedDependenciesRepository,
       liveDependenciesRepository,
       checksumGenerator,
-      logger,
-      crasher)
+      logger)
 
   private lateinit var liveDependencyA: LiveDependency
 
@@ -96,8 +93,6 @@ class TaskRunnerTests {
 
     whenever(logger.logSuccess()).thenReturn(Completable.complete())
     whenever(logger.logFailureDueTo(any())).thenReturn(Completable.complete())
-
-    whenever(crasher.failBuild()).thenReturn(Completable.complete())
   }
 
   /**
@@ -260,18 +255,16 @@ class TaskRunnerTests {
 
       verify(logger, times(1)).logSuccess()
       verify(logger, never()).logFailureDueTo(any())
-      verify(crasher, never()).failBuild()
     }
 
     private fun runTestWithFailureExpected(expectedDiff: DependencyDiff) {
       taskRunner
           .run()
           .test()
-          .assertComplete()
+          .assertError(VerificationFailedException::class.java)
 
       verify(logger, never()).logSuccess()
       verify(logger, times(1)).logFailureDueTo(expectedDiff)
-      verify(crasher, times(1)).failBuild()
     }
   }
 }
