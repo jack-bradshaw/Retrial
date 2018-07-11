@@ -1,4 +1,4 @@
-package com.matthewtamlin.retrial.checksum
+package com.matthewtamlin.retrial.hash
 
 import dagger.Module
 import dagger.Provides

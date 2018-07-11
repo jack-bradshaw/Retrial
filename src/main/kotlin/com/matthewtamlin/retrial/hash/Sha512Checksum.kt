@@ -1,4 +1,4 @@
-package com.matthewtamlin.retrial.checksum
+package com.matthewtamlin.retrial.hash
 
 /**
  * A SHA2-512 hash of some data.

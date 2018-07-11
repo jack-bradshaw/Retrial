@@ -1,6 +1,6 @@
 package com.matthewtamlin.retrial.core
 
-import com.matthewtamlin.retrial.checksum.Sha512ChecksumGeneratorModule
+import com.matthewtamlin.retrial.hash.Sha512ChecksumGeneratorModule
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepositoryModule
 import com.matthewtamlin.retrial.dependencies.saved.DependencyDatabaseFile
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependenciesRepositoryModule

@@ -1,7 +1,7 @@
 package com.matthewtamlin.retrial.dependencies.saved
 
 import com.google.gson.Gson
-import com.matthewtamlin.retrial.checksum.Sha512Checksum
+import com.matthewtamlin.retrial.hash.Sha512Checksum
 import com.matthewtamlin.retrial.dependencies.DependencyKey
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested

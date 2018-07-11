@@ -1,7 +1,6 @@
 package com.matthewtamlin.retrial.core.verifydependencies
 
-import com.matthewtamlin.retrial.checksum.Sha512ChecksumGenerator
-import com.matthewtamlin.retrial.core.Crasher
+import com.matthewtamlin.retrial.hash.Sha512ChecksumGenerator
 import dagger.Module
 import dagger.Provides
 import com.matthewtamlin.retrial.dependencies.live.ProjectBasedLiveDependenciesRepository
