@@ -1,6 +1,5 @@
 package com.matthewtamlin.retrial.core
 
-import io.reactivex.rxkotlin.subscribeBy
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import java.io.File
@@ -8,6 +7,9 @@ import javax.inject.Inject
 import com.matthewtamlin.retrial.core.recorddependencies.TaskRunner as RecordDependenciesTaskRunner
 import com.matthewtamlin.retrial.core.verifydependencies.TaskRunner as VerifyDependenciesTaskRunner
 
+/**
+ * Plugin for verifying dependency integrity at build time to prevent supply chain attacks.
+ */
 open class RetrialPlugin : Plugin<Project> {
   private lateinit var project: Project
 
