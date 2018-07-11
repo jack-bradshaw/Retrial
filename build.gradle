@@ -70,9 +70,6 @@ compileTestKotlin {
   kotlinOptions.jvmTarget = "1.8"
 }
 
-// Necessary to ensure the gradle plugin definition is included in the shadow jar
-shadowJar.dependsOn(build)
-
 jar {
   baseName 'intermediate'
 }
@@ -80,3 +77,6 @@ jar {
 shadowJar{
   archiveName = "retrial.${extension}"
 }
+
+// Necessary to ensure the gradle plugin definition is included in the shadow jar
+shadowJar.dependsOn(build)
