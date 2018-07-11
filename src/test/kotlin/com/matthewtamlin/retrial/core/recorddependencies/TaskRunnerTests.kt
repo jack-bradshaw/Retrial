@@ -31,16 +31,10 @@ class TaskRunnerTests {
 
   private val checksumGenerator = Mockito.mock(Sha512ChecksumGenerator::class.java)
 
-  private val logger = Mockito.mock(ResultLogger::class.java)
-
-  private val crasher = Mockito.mock(Crasher::class.java)
-
   private val taskRunner = TaskRunner(
       savedDependenciesRepository,
       liveDependenciesRepository,
-      checksumGenerator,
-      logger,
-      crasher)
+      checksumGenerator)
 
   private lateinit var liveDependencyA: LiveDependency
 
@@ -66,11 +60,6 @@ class TaskRunnerTests {
 
     whenever(checksumGenerator.generateChecksum(liveDependencyA.file)).thenReturn(Single.just(dependencyAChecksum))
     whenever(checksumGenerator.generateChecksum(liveDependencyB.file)).thenReturn(Single.just(dependencyBChecksum))
-
-    whenever(logger.logSuccess()).thenReturn(Completable.complete())
-    whenever(logger.logFailure()).thenReturn(Completable.complete())
-
-    whenever(crasher.failBuild()).thenReturn(Completable.complete())
   }
 
   @Nested
