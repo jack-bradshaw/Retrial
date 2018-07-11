@@ -3,6 +3,9 @@ package com.matthewtamlin.retrial.core.verifydependencies
 import io.reactivex.Completable
 import org.gradle.api.logging.Logger
 
+/**
+ * A [ResultLogger] that uses a [Logger].
+ */
 class GradleResultLogger(private val logger: Logger): ResultLogger {
   override fun logSuccess() = Completable.fromRunnable { logger.info("Dependency verification passed.") }
 
