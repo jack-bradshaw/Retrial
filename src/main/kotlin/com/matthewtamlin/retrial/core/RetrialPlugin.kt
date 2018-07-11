@@ -1,5 +1,6 @@
 package com.matthewtamlin.retrial.core
 
+import io.reactivex.rxkotlin.subscribeBy
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import java.io.File
@@ -47,7 +48,7 @@ open class RetrialPlugin : Plugin<Project> {
         .task("verifyDependencyChecksums")
         .apply { group = "retrial" }
         .doLast {
-          verifyDependenciesTaskRunner.run().subscribe()
+          verifyDependenciesTaskRunner.run().blockingAwait()
         }
   }
 
@@ -56,7 +57,7 @@ open class RetrialPlugin : Plugin<Project> {
         .task("recordDependencyChecksums")
         .apply { group = "retrial" }
         .doLast {
-          recordDependenciesTaskRunner.run().subscribe()
+          recordDependenciesTaskRunner.run().blockingAwait()
         }
   }
 }
