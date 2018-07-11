@@ -13,8 +13,8 @@ import org.mockito.Mockito.mock
 class DependencyDiffTests {
 
   @Nested
-  @DisplayName("successful")
-  inner class SuccessfulTests {
+  @DisplayName("empty")
+  inner class EmptyTests {
 
     @Test
     @DisplayName("should be true when there are no additional, missing or changed dependencies")
@@ -24,7 +24,7 @@ class DependencyDiffTests {
           missingDependencies = setOf(),
           changedDependencies = setOf())
 
-      assertk.assert(diff.successful).isTrue()
+      assertk.assert(diff.empty).isTrue()
     }
 
     @Test
@@ -32,7 +32,7 @@ class DependencyDiffTests {
     fun additionalDependencies() {
       val diff = DependencyDiff(additionalDependencies = setOf(mock(DependencyKey::class.java)))
 
-      assertk.assert(diff.successful).isFalse()
+      assertk.assert(diff.empty).isFalse()
     }
 
     @Test
@@ -40,7 +40,7 @@ class DependencyDiffTests {
     fun missingDependencies() {
       val diff = DependencyDiff(missingDependencies = setOf(mock(DependencyKey::class.java)))
 
-      assertk.assert(diff.successful).isFalse()
+      assertk.assert(diff.empty).isFalse()
     }
 
     @Test
@@ -48,7 +48,7 @@ class DependencyDiffTests {
     fun changedDependencies() {
       val diff = DependencyDiff(changedDependencies = setOf(mock(DependencyKey::class.java)))
 
-      assertk.assert(diff.successful).isFalse()
+      assertk.assert(diff.empty).isFalse()
     }
   }
 }

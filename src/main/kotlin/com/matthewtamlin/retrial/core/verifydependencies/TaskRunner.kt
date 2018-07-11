@@ -57,7 +57,7 @@ class TaskRunner(
   }
 
   private fun handleResult(diff: DependencyDiff) = Completable.defer {
-    if (diff.successful) {
+    if (diff.empty) {
       resultLogger.logSuccess()
     } else {
       resultLogger

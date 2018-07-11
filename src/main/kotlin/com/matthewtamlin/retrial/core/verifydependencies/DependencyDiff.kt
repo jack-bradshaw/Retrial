@@ -7,5 +7,6 @@ data class DependencyDiff(
     val missingDependencies: Set<DependencyKey> = setOf(),
     val changedDependencies: Set<DependencyKey> = setOf()
 ) {
-  val successful = additionalDependencies.isEmpty() && missingDependencies.isEmpty() && changedDependencies.isEmpty()
+
+  val empty = additionalDependencies.isEmpty() && missingDependencies.isEmpty() && changedDependencies.isEmpty()
 }
