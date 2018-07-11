@@ -13,7 +13,7 @@ import io.reactivex.functions.BiFunction
 import io.reactivex.rxkotlin.toMap
 
 /**
- * Runners the verify dependencies task.
+ * Runs the verify dependencies task.
  */
 class TaskRunner(
     private val savedDependenciesRepository: SavedDependenciesRepository,

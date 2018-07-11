@@ -13,7 +13,7 @@ import com.matthewtamlin.retrial.dependencies.DependencyKey
  *
  * @property changedDependencies
  * the dependencies that are present in both the live dependencies and the saved dependencies, but with different
- * content
+ * contents
  */
 data class DependencyDiff(
     val additionalDependencies: Set<DependencyKey> = setOf(),

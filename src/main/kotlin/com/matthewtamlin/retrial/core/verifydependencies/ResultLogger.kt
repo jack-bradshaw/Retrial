@@ -7,12 +7,14 @@ import io.reactivex.Completable
  */
 interface ResultLogger {
   /**
-   * Logs the success of the verify dependencies task.
+   * Logs a success of the verify dependencies task.
    */
   fun logSuccess(): Completable
 
   /**
-   * Logs the failure of the verify dependencies task. The [diff] details the exact reason for the failure.
+   * Logs a failure of the verify dependencies task.
+   *
+   * @param diff details the exact reason for the failure.
    */
   fun logFailureDueTo(diff: DependencyDiff): Completable
 }
