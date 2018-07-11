@@ -1,10 +1,11 @@
-package com.matthewtamlin.retrial.checksum
+package com.matthewtamlin.retrial.hash
 
 import io.reactivex.Single
 import java.io.File
 import java.nio.file.Files
 import java.security.MessageDigest
 import javax.inject.Provider
+
 
 class Sha512ChecksumGenerator {
   private val sha512DigestProvider: Provider<MessageDigest> = Provider { MessageDigest.getInstance("SHA-512") }

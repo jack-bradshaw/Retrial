@@ -1,4 +1,4 @@
-package com.matthewtamlin.retrial.checksum
+package com.matthewtamlin.retrial.hash
 
 import io.github.glytching.junit.extension.folder.TemporaryFolder
 import io.github.glytching.junit.extension.folder.TemporaryFolderExtension
