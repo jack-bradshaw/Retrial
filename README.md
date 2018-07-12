@@ -52,7 +52,7 @@ apply plugin: 'retrial'
 
 ```
 
-That’s it! Retrial will now work for your project.
+That’s it! Your project can now use Retrial.
 
 ### Recording the dependency checksums
 To create the checksum record, run the 'recordDependencyChecksums' task:
