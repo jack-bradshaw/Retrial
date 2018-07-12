@@ -6,15 +6,15 @@ Retrial was created to address the unresolved issues in Open Whisper Systems' [g
 ## Why use Retrial
 Using remote dependencies in a Gradle build is unavoidable for any non-trivial project, but doing so creates an opportunity for supply chain attacks. By acting as a MITM or by gaining direct access to a remote repository, an adversary could replace a legitimate dependency with their own compromised version. If used correctly, such an attack would allow an adversary to inject a vulnerability into your project at build time.
 
-Retrial guards against this problem by keeping a cryptographically secure checksum of each dependency, and comparing the saved checksums to the current checksums at build time. If any dependency has changed in any way, retrial fails the build and describes the change. Since dependencies may have dependencies of their own, so Retrial transitively checks the entire dependency graph to ensure integrity throughout.
+Retrial guards against this problem by keeping a cryptographically secure checksum of each dependency, and comparing the saved checksums to the current checksums at build time. If any dependency has changed in any way, retrial fails the build and describes the change. Since dependencies may have dependencies of their own, Retrial transitively checks the entire dependency graph to ensure integrity throughout.
 
 ## Usage
 There are three steps to using the plugin:
-- Adding the plugin
-- Recording the dependency checksums
-- Verifying the dependency checksums
+1. Add the plugin to your project
+2. Record the dependency checksums
+3. Verify the dependency checksums
 
-### Adding the plugin
+### Add the plugin to your project
 Retrial cannot be published as an artifact because doing so would create a bootstrap problem. Instead, it must be built from the source and included in your project as a jar.
 
 Start by cloning the repository:
@@ -22,7 +22,7 @@ Start by cloning the repository:
 git clone https://github.com/matthewtamlin/retrial.git
 ```
 
-Then open the repository and build the plugin using Gradle:
+Then build the plugin using Gradle:
 ```shell
 cd retrial
 
