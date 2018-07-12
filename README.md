@@ -99,7 +99,7 @@ Gradle has built in support for dependency locking, but it doesn't offer any pro
 Retrial and dependency locking can be used at the same time with no conflicts. In fact, you probably want to use dependency locking if you’re using Retrial and dynamic dependency ranges, or else your build may fail spontaneously.
 
 ## Contact
-This repository is owned and maintained by Matt Tamlin. Feel free to get in contact at any time via [email](mailto:matthew.tamlin@icloud.com or [twitter](https://twitter.com/tamlinmatthew).
+This repository is owned and maintained by Matt Tamlin. Feel free to get in contact at any time via [email](mailto:matthew.tamlin@icloud.com) or [twitter](https://twitter.com/tamlinmatthew).
 
 ## Contributing
 If you wish to contribute, please read the [contributing guidelines](CONTRIBUTING.md).
