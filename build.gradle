@@ -94,5 +94,11 @@ shadowJar{
   archiveName = "retrial.${extension}"
 }
 
+task buildRelease(dependsOn: shadowJar) {
+  doLast {
+    print "Release can be found at build/libs/retrial.jar"
+  }
+}
+
 // Necessary to ensure the gradle plugin definition is included in the shadow jar
 shadowJar.dependsOn(build)
