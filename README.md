@@ -34,6 +34,11 @@ gradlew buildRelease
 ```
 
 Next copy the jar from `retrial/build/libs/retrial.jar` to the `libs` folder of your project.
+```shell
+cp build/libs/retrial.jar yourproject/app/libs/retrial.jar
+
+# Or just use Finder/explorer to copy the files...
+```
 
 Finally add the following to your Gradle build file:
 ```gradle
