@@ -18,10 +18,13 @@ buildscript {
   repositories {
     mavenCentral()
     jcenter()
+
+    flatDir dirs: 'proguard'
   }
 
   dependencies {
     classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.51'
+    classpath ':proguard:'
   }
 }
 
