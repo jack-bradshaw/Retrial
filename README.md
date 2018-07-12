@@ -55,7 +55,7 @@ apply plugin: 'retrial'
 That’s it! Your project can now use Retrial.
 
 ### Recording the dependency checksums
-To create the checksum record, run the 'recordDependencyChecksums' task:
+To create the checksum record, run the `recordDependencyChecksums` task:
 ```
 # On MacOS/Linux
 ./gradlew recordDependencyChecksums
@@ -69,7 +69,7 @@ This task creates a JSON file in your project directory and writes the checksums
 Whenever you intentionally update/add/remove a dependency, you’ll need to run the record dependencies task again to update the record.
 
 ### Verify the dependency checksums
-To verify your dependencies against the record, run the 'verifyDependencyChecksums' task:
+To verify your dependencies against the record, run the `verifyDependencyChecksums` task:
 ```
 # On MacOS/Linux
 ./gradlew verifyDependencyChecksums
