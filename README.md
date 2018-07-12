@@ -1,12 +1,12 @@
 # Retrial
 A Gradle plugin that verifies dependency integrity at build time to guard against supply chain attacks.
 
-Retrial was created to address the unresolved issues in Open Whisper Systems' [gradle-witness](https://github.com/signalapp/gradle-witness) plugin, and to add a more convenient means of storing dependency checksums.
+Retrial was created to address the unresolved issues in Open Whisper Systems' [gradle-witness](https://github.com/signalapp/gradle-witness) plugin, and to provide a more convenient means of storing dependency checksums.
 
 ## Why use Retrial
-Using remote dependencies in a Gradle build is unavoidable for any non-trivial project, but doing so creates an opportunity for supply chain attacks. By acting as a MITM or by gaining direct access to a remote repository, an adversary could replace a legitimate dependency with their own compromised version. If used correctly, such an attack would allow an adversary to inject a vulnerability into your project at build time.
+Using remote dependencies is unavoidable for any non-trivial project, but doing so creates an opportunity for supply chain attacks. By acting as a MITM or by gaining direct access to a remote repository, an adversary could replace a legitimate dependency with their own compromised version. If used correctly, such an attack would allow an adversary to inject vulnerabilities into your project at build time.
 
-Retrial guards against this problem by keeping a cryptographically secure checksum of each dependency, and comparing the saved checksums to the current checksums at build time. If any dependency has changed in any way, retrial fails the build and describes the change. Since dependencies may have dependencies of their own, Retrial transitively checks the entire dependency graph to ensure integrity throughout.
+Retrial guards against this problem by keeping a cryptographically secure checksum of each dependency, and comparing the saved checksums to the current checksums at build time. If any dependency has changed in any way, Retrial fails the build and describes the change. Since dependencies may have dependencies of their own, Retrial transitively checks the entire dependency graph to ensure integrity throughout.
 
 ## Usage
 There are three steps to using the plugin:
@@ -52,7 +52,7 @@ apply plugin: 'retrial'
 
 ```
 
-That’s it! Your project can now use Retrial.
+That’s it! You've successfully added Retrial to your project.
 
 ### Recording the dependency checksums
 To create the checksum record, run the `recordDependencyChecksums` task:
@@ -64,7 +64,7 @@ To create the checksum record, run the `recordDependencyChecksums` task:
 gradlew recordDependencyChecksums
 ```
 
-This task creates a JSON file in your project directory and writes the checksums to it. You can generally disregard this file, but make sure its checked in to source control and avoid manually editing it.
+This task creates the `retrial-checksums.json` file in your project directory and writes the checksums to it. You can generally disregard this file, but make sure its checked in to source control and avoid manually editing it.
 
 Whenever you intentionally update/add/remove a dependency, you’ll need to run the record dependencies task again to update the record.
 
@@ -79,16 +79,16 @@ gradlew verifyDependencyChecksums
 ```
 
 This task compares the saved checksums against the current checksums and fails the build if:
-- There are any additional dependency in the build that is missing from the record.
-- There are any additional dependency in the record that is missing from the build.
+- There are any additional dependency in the build that are missing from the record.
+- There are any additional dependency in the record that are missing from the build.
 - There are any checksum mismatches.
 
-By default, the task only runs when manually invoked. To automatically run the task on every build, add the following to your gradle build file:
+By default, the task only runs when manually invoked. To automatically run the task every time the project is built, add the following to your gradle build file:
 ```
 build.finalizedBy(verifyDependencyChecksums)
 ```
 
-Retrial is very lightweight and shouldn’t noticeably slow down your build.
+Retrial is very lightweight so you shouldn’t notice any effect on your build times.
 
 ## Limitations
 Its important to recognise that Retrial doesn't provide any assurance that your dependencies are actually free from vulnerabilities. All it does is ensure that the remote dependencies haven’t changed since you added them. Retrial will not save you if you include a dependency that already has a vulnerability and then record the checksums. Depending on your circumstances and the acceptable level of risk, you may want to perform a full audit of your dependencies prior to using Retrial.
