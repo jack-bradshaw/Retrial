@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import proguard.gradle.ProGuardTask
+
 buildscript {
   repositories {
     mavenCentral()
@@ -90,11 +92,17 @@ compileTestKotlin {
 }
 
 jar {
-  baseName 'intermediate'
+  baseName 'intermediate-skeleton'
 }
 
 shadowJar{
-  archiveName = "retrial.${extension}"
+  archiveName = "intermediate-shadow.${extension}"
+}
+
+task proguard(type: ProGuardTask, dependsOn: shadowJar) {
+  configuration 'proguard/configuration.txt'
+  injars 'build/libs/intermediate-shadow.jar'
+  outjars 'build/libs/retrial.jar'
 }
 
 // Necessary to ensure the gradle plugin definition is included in the shadow jar
