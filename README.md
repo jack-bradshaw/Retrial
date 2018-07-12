@@ -56,13 +56,13 @@ That’s it! Your project can now use Retrial.
 
 ### Recording the dependency checksums
 To create the checksum record, run the 'recordDependencyChecksums' task:
-'''
+```
 # On MacOS/Linux
 ./gradlew recordDependencyChecksums
 
 # On Windows
 gradlew recordDependencyChecksums
-'''
+```
 
 This task creates a JSON file in your project containing the checksums. You can generally disregard this file, but make sure its checked in to source control and avoid manually editing it.
 
@@ -70,13 +70,13 @@ Whenever you intentionally update/add/remove a dependency, you’ll need to run 
 
 ### Verify the dependency checksums
 To verify your dependencies against the record, run the 'verifyDependencyChecksums' task:
-'''
+```
 # On MacOS/Linux
 ./gradlew verifyDependencyChecksums
 
 # On Windows
 gradlew verifyDependencyChecksums
-'''
+```
 
 This task compares the saved checksums against the current checksums and fails the build if:
 - There is an additional dependency in the build that is missing from the record.
@@ -84,9 +84,9 @@ This task compares the saved checksums against the current checksums and fails t
 - There is a checksum mismatch.
 
 By default, the task only runs when manually invoked. To automatically run the task on every build, add the following to your gradle build file:
-'''
+```
 build.finalizedBy(verifyDependencyChecksums)
-‘’'
+```
 
 Retrial is very lightweight and shouldn’t noticeably slow down your build.
 
