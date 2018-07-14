@@ -45,12 +45,12 @@ class Sha512HashGeneratorTests {
   inner class TestGenerateHash {
 
     @Test
-    @DisplayName("should fail when the file is empty")
+    @DisplayName("should return the SHA2-512 hash of an empty string when the file is empty")
     fun fileIsEmpty() {
       generator
           .generateHash(file)
           .test()
-          .assertError(RuntimeException::class.java)
+          .assertResult(Sha512Hash("E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"))
     }
 
     @Test
