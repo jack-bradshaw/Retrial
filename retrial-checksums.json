@@ -1,0 +1,552 @@
+[
+  {
+    "key": {
+      "group": "io.github.lukehutch",
+      "name": "fast-classpath-scanner",
+      "version": "2.2.1",
+      "filepath": "fast-classpath-scanner-2.2.1.jar"
+    },
+    "hash": {
+      "value": "E1402588831BC952906B701128E0F0D2B5FE10DB6CB7BC7F684EC5C0119DF124F65BA644E9BA0B5EEDBC3551B819DB3AB5D94D25370AF3566CE82494B643F7E8"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.dagger",
+      "name": "dagger-compiler",
+      "version": "2.15",
+      "filepath": "dagger-compiler-2.15.jar"
+    },
+    "hash": {
+      "value": "5D3D41A6957C141DE7FD15372EE12C949F7EED4A0F6CE50AF101AB59EC987F63D9DB480EC6C63B0EF19DB2DF027EA8D9A0058B81A4A0ECC8FF522E8D4D61730F"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.errorprone",
+      "name": "error_prone_annotations",
+      "version": "2.0.18",
+      "filepath": "error_prone_annotations-2.0.18.jar"
+    },
+    "hash": {
+      "value": "57020B897D47FF0CBE4DD98E368CE4EA59A4CC723E48EEA1B7D338299AD7EC52977A0B2B29025043680BA3CCC3EC01069F4EC0E0BD023D2F12158DC0D5A4A9C2"
+    }
+  },
+  {
+    "key": {
+      "group": "net.bytebuddy",
+      "name": "byte-buddy-agent",
+      "version": "1.8.10",
+      "filepath": "byte-buddy-agent-1.8.10.jar"
+    },
+    "hash": {
+      "value": "2C2A6C30678EFA32C2A5B33B12443684940FF257C55CCBDF616E4354F22ED118A7DD901B874891EEC65565F20D3B491D4F2FC8A43780181F68BD4B7A12C6592A"
+    }
+  },
+  {
+    "key": {
+      "group": "io.reactivex.rxjava2",
+      "name": "rxkotlin",
+      "version": "2.2.0",
+      "filepath": "rxkotlin-2.2.0.jar"
+    },
+    "hash": {
+      "value": "37BA14677BF1D405DAC313354E92D98C0476B824B0FA4D348BEB1B1366F0D5A8FFE5E46F1A0B588BC672382A29759384E2EDF2516D4B3039E226946077A9EE79"
+    }
+  },
+  {
+    "key": {
+      "group": "org.opentest4j",
+      "name": "opentest4j",
+      "version": "1.1.0",
+      "filepath": "opentest4j-1.1.0.jar"
+    },
+    "hash": {
+      "value": "BB72A65673BEC0AF3D420E96EDCC1E3152BDBD0F670E2E09172F00F05549FA3B0A07C40ED2DBEEC75DA6E548623AFA4E343343CCA15A7A016AAA6C3E48AB0765"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.dagger",
+      "name": "dagger",
+      "version": "2.15",
+      "filepath": "dagger-2.15.jar"
+    },
+    "hash": {
+      "value": "102200FF19A8D0D99E0BA2D98E6DB0DCAAB2E1679F178D08BFF92D18B0636804C832B91550924E9F97913CE3C4E339CE5506BB24631B83AC117B0FA0087865ED"
+    }
+  },
+  {
+    "key": {
+      "group": "org.checkerframework",
+      "name": "checker-compat-qual",
+      "version": "2.3.0",
+      "filepath": "checker-compat-qual-2.3.0.jar"
+    },
+    "hash": {
+      "value": "F2345EEDB965FDAC9A37B5493FE6FCCD43FA0DBE4D6B8D19EF4352027483774CA19FAF54FDF734A5EF4AF382FD7D6A5FCB4AF9A5F3F5B11CD407FCB77BB88E4D"
+    }
+  },
+  {
+    "key": {
+      "group": "org.jetbrains.kotlin",
+      "name": "kotlin-stdlib",
+      "version": "1.2.51",
+      "filepath": "kotlin-stdlib-1.2.51.jar"
+    },
+    "hash": {
+      "value": "37B80E9DC8C8031A9C53ED4B1EFFB92FD7EA05DC587D179B00122CC622604B4F8EB122A5267EB360AEDFEC9F8FC0CFCCF96DBB8D336BD7DCEB8E08D537F230A6"
+    }
+  },
+  {
+    "key": {
+      "group": "org.jetbrains.kotlin",
+      "name": "kotlin-stdlib-common",
+      "version": "1.2.51",
+      "filepath": "kotlin-stdlib-common-1.2.51.jar"
+    },
+    "hash": {
+      "value": "CB1F62EB9024781D3D68D28C2D1208EE95DD44F820D27EFEE2718F4CF015657AD9AD4646B3D8B47FC9D2AF151A2CBF3CD817334B374AD32DD44910AB09BD178C"
+    }
+  },
+  {
+    "key": {
+      "group": "com.fasterxml.jackson.core",
+      "name": "jackson-databind",
+      "version": "2.8.8.1",
+      "filepath": "jackson-databind-2.8.8.1.jar"
+    },
+    "hash": {
+      "value": "7CC0E68B44FB39454BA4B5771D8DDC72E2FF29DBD48D0203DBF6C2FE3399AEBDD4EA38EAE59CE3EB6A7179D75101065B23C5C955E744CADBF4AAA7220DC3BF64"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.googlejavaformat",
+      "name": "google-java-format",
+      "version": "1.4",
+      "filepath": "google-java-format-1.4.jar"
+    },
+    "hash": {
+      "value": "0A8D346C9FFC7865BCEFDAE11CEB54B1D69A3923920832907FC5DC2A2379D38DA6C5F29EC3BDB2BDC9946065F65D02DECC0581683D10BE4D29232A20062C6A35"
+    }
+  },
+  {
+    "key": {
+      "group": "org.junit.jupiter",
+      "name": "junit-jupiter-engine",
+      "version": "5.2.0",
+      "filepath": "junit-jupiter-engine-5.2.0.jar"
+    },
+    "hash": {
+      "value": "F2BF6AB75A111CD2CDA9F8D50F62B3986FC7B675B9F14ABFA73D44CCBCE010B559BB2A7DCEE670E8134F1E8859C2C804B87B50B141C6D48A55699CF07F1D75D7"
+    }
+  },
+  {
+    "key": {
+      "group": "io.reactivex.rxjava2",
+      "name": "rxjava",
+      "version": "2.1.12",
+      "filepath": "rxjava-2.1.12.jar"
+    },
+    "hash": {
+      "value": "F20ACC2EB94CF4C6B184DEB00ACF4003C37D8BAD76124380800FD838654446E523B9864F042615369E93C6AAFC5B3355CFA4BC7E86616C8586AE4AE1AC9A73F7"
+    }
+  },
+  {
+    "key": {
+      "group": "javax.annotation",
+      "name": "jsr250-api",
+      "version": "1.0",
+      "filepath": "jsr250-api-1.0.jar"
+    },
+    "hash": {
+      "value": "8B5DD24460E42763F3645205BE4B4F80691E217D36BEE5FC5B5DF6EBC8782ED0F641FB9E2FE918A2D0EEDE32556656F6B61FE65D2CBEC5086E61EF3D91E4D871"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.code.gson",
+      "name": "gson",
+      "version": "2.8.2",
+      "filepath": "gson-2.8.2.jar"
+    },
+    "hash": {
+      "value": "C0C6DC5D609950A6EE3C7E5EA493DA0E6906A18F38FC5A23CC792C1E09E0E892344B4AE2DD35879D6101533E485784E1ECA5052E0AEF44A724CA8A8EE4D73F04"
+    }
+  },
+  {
+    "key": {
+      "group": "org.jetbrains.kotlin",
+      "name": "kotlin-annotation-processing-gradle",
+      "version": "1.2.51",
+      "filepath": "kotlin-annotation-processing-gradle-1.2.51.jar"
+    },
+    "hash": {
+      "value": "4148413575F4FD76FE1765C91551AD53E9B14DB20C501900797BD0B8822E3002E3E76A8449DA4AB58BB82717AE30376986C0A8634A0CA19790925CAD4C612591"
+    }
+  },
+  {
+    "key": {
+      "group": "io.github.glytching",
+      "name": "junit-extensions",
+      "version": "2.2.0",
+      "filepath": "junit-extensions-2.2.0.jar"
+    },
+    "hash": {
+      "value": "72AC60F0740CD0F9AF7E5A5591A6D40A1E0062AC193BE0B3E37373D195592B001630D70D4BACB516255668B440868E2319C5E081DBC57261A5BDF80E83955C04"
+    }
+  },
+  {
+    "key": {
+      "group": "org.jetbrains.kotlin",
+      "name": "kotlin-stdlib-jdk8",
+      "version": "1.2.51",
+      "filepath": "kotlin-stdlib-jdk8-1.2.51.jar"
+    },
+    "hash": {
+      "value": "60A0FA58EE81A1879DE31535D6C549134C74338A744F9A993D232E08A1700DEBBC68C011291AC22CF81F8762D2F5166B2B0CAA042C50C6B30FDF75D7E218CE8D"
+    }
+  },
+  {
+    "key": {
+      "group": "javax.inject",
+      "name": "javax.inject",
+      "version": "1",
+      "filepath": "javax.inject-1.jar"
+    },
+    "hash": {
+      "value": "E126B7CCF3E42FD1984A0BEEF1004A7269A337C202E59E04E8E2AF714280D2F2D8D2BA5E6F59481B8DCD34AAF35C966A688D0B48EC7E96F102C274DC0D3B381E"
+    }
+  },
+  {
+    "key": {
+      "group": "org.objenesis",
+      "name": "objenesis",
+      "version": "2.6",
+      "filepath": "objenesis-2.6.jar"
+    },
+    "hash": {
+      "value": "23A593BDED8CB43236FAAD2018B008DA47BF4E29CC60C2E98FD4F2ED578FE2BADDD3A98547DC14273017C82CB19CE8EAAAB71D49273411856A2BA1A5D51015FC"
+    }
+  },
+  {
+    "key": {
+      "group": "com.nhaarman.mockitokotlin2",
+      "name": "mockito-kotlin",
+      "version": "2.0.0-rc1",
+      "filepath": "mockito-kotlin-2.0.0-rc1.jar"
+    },
+    "hash": {
+      "value": "E8D699B739784C943E3B15F7300A53379E8869AA4B526295CD13A21F80D460CF39745089A47E85F9C91DB38ADBD1E3E44D755F4AA4A6715367742B7DB12BA5D3"
+    }
+  },
+  {
+    "key": {
+      "group": "com.squareup",
+      "name": "javapoet",
+      "version": "1.8.0",
+      "filepath": "javapoet-1.8.0.jar"
+    },
+    "hash": {
+      "value": "E9B95845CAC59ECA3DC3CB4E442E156B0AA23E577EC1BB1C0FF687724DADCA76BB2267084ABBDF1CFD95F9D07F429E4C906E757FA1F6D31EADA82F8AC3AA9AC4"
+    }
+  },
+  {
+    "key": {
+      "group": "org.apiguardian",
+      "name": "apiguardian-api",
+      "version": "1.0.0",
+      "filepath": "apiguardian-api-1.0.0.jar"
+    },
+    "hash": {
+      "value": "127F7E6381642F3F0F8298E5129F31CAE947B81C4867CAAA419803E6DCFEEE5DA61F0262D2C10C8AD151F24E82F708CE81B2FDA217C31DBB21794E6C9EC71E0A"
+    }
+  },
+  {
+    "key": {
+      "group": "io.github.benas",
+      "name": "random-beans",
+      "version": "3.7.0",
+      "filepath": "random-beans-3.7.0.jar"
+    },
+    "hash": {
+      "value": "798BB820E2934C62FECDE5DCAA23B3F47909B6F1C2BC0C63379F39B5CAE8A3EA987CD771B464CC65C4A1E92ADE6B10EDF6EEEE734298897C0E373527D9BBC347"
+    }
+  },
+  {
+    "key": {
+      "group": "org.reactivestreams",
+      "name": "reactive-streams",
+      "version": "1.0.2",
+      "filepath": "reactive-streams-1.0.2.jar"
+    },
+    "hash": {
+      "value": "873AD9EAF57AB70D9D47A99B12ECDBAD60BA81E38C0961262E92F48B2A046EF0E76DAFBF76F5766410F406B1155CDE94622062CD657D29B0B3CE157F8DE0A082"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.dagger",
+      "name": "dagger-producers",
+      "version": "2.15",
+      "filepath": "dagger-producers-2.15.jar"
+    },
+    "hash": {
+      "value": "33808E295E144F0DA9DD7B379572464F7B5CF8C1C34132CB9E7A6DCCF71430F14193F05E43DF944801B60836D8D56BFFF9012B47D65C38DDA4F867EB90129BFF"
+    }
+  },
+  {
+    "key": {
+      "group": "org.junit.platform",
+      "name": "junit-platform-commons",
+      "version": "1.2.0",
+      "filepath": "junit-platform-commons-1.2.0.jar"
+    },
+    "hash": {
+      "value": "B08BCFA884C67AE155EA5EB0AE33F0D58E88096015B82EBF3E5A301292B4622AEA1514285AEEF7361F8B9E4C83E48E5D8842433AFE6E3B0B06C7A1C8729B104E"
+    }
+  },
+  {
+    "key": {
+      "group": "org.codehaus.mojo",
+      "name": "animal-sniffer-annotations",
+      "version": "1.14",
+      "filepath": "animal-sniffer-annotations-1.14.jar"
+    },
+    "hash": {
+      "value": "9E5E3EA9E06E0AC9463869FD0E08ED38F7042784995A7B50C9BFD7F692A53F0E1430B9E1367DC772D0D4EAFE5FD2BEABBCC60DA5008BD792F9E7EC8436C0F136"
+    }
+  },
+  {
+    "key": {
+      "group": "org.jetbrains.kotlin",
+      "name": "kotlin-reflect",
+      "version": "1.2.51",
+      "filepath": "kotlin-reflect-1.2.51.jar"
+    },
+    "hash": {
+      "value": "2A16A41A5DA675CD91E6BCF7BB39CA49CE9A852A12C614A9198BF80C137CD785153EC7EF5DD926EBB295EEF6969069B5BD3F1B26856C0BE3E58F5500597FADC5"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.guava",
+      "name": "guava",
+      "version": "23.3-jre",
+      "filepath": "guava-23.3-jre.jar"
+    },
+    "hash": {
+      "value": "A1829648A080A5B20E25F92E29B07BE947A44F0A2420F67247C714483CB2DFC063A3CD7A2D2EB27C43B18EEA67CB78460F66CAFE180485482C8FE92848A986D5"
+    }
+  },
+  {
+    "key": {
+      "group": "org.junit.platform",
+      "name": "junit-platform-engine",
+      "version": "1.2.0",
+      "filepath": "junit-platform-engine-1.2.0.jar"
+    },
+    "hash": {
+      "value": "D367CAD97695832F088E299D873570EA9E4BFFD30222A5B3157FD506D9405776CFBA78B8DC0B6E2697E96D0008AD65B7A35324FAB7386C99257D2A723641B679"
+    }
+  },
+  {
+    "key": {
+      "group": "com.fasterxml.jackson.core",
+      "name": "jackson-annotations",
+      "version": "2.8.0",
+      "filepath": "jackson-annotations-2.8.0.jar"
+    },
+    "hash": {
+      "value": "9E549C2044BD9856C7CCA491F6ACBD0C5A87A208E550410CBC466669328F6022D1BD89258ECA7C3A765C2427B0D33C83DF29CB1205BCE51A1F43B4148E1BFCAC"
+    }
+  },
+  {
+    "key": {
+      "group": ".gradle",
+      "name": "caches",
+      "version": "4.8.1",
+      "filepath": "gradle-test-kit-4.8.1.jar"
+    },
+    "hash": {
+      "value": "462BCB5ABF348254C7B44F23CF3F7C494868DB9DB5EA7092565E8F0CB4E98305D1729F085DDF2E9821D44B421769F9DBC44C71AF2D7FDE4D3783C0EF9DFB82D0"
+    }
+  },
+  {
+    "key": {
+      "group": "com.fasterxml.jackson.core",
+      "name": "jackson-core",
+      "version": "2.8.8",
+      "filepath": "jackson-core-2.8.8.jar"
+    },
+    "hash": {
+      "value": "BBB71CEFAD399808316132E3777D6A5AB3247748F5254327EF7B30FDAC951E60BD8C4A6741B711DAF2F90AC067CA2ACDA79200E91F9D9593B75C1DCCB85E699A"
+    }
+  },
+  {
+    "key": {
+      "group": "org.jetbrains.kotlin",
+      "name": "kotlin-compiler-embeddable",
+      "version": "1.2.51",
+      "filepath": "kotlin-compiler-embeddable-1.2.51.jar"
+    },
+    "hash": {
+      "value": "1204A9BE04126046CD0838FBC3DD7FD95181408FDB90718F5A0585756AA0BFD3F717783340E471986D95B0FAC9219098868227D7EA6D2C5EE3651B451069575D"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.dagger",
+      "name": "dagger-spi",
+      "version": "2.15",
+      "filepath": "dagger-spi-2.15.jar"
+    },
+    "hash": {
+      "value": "9F7B0107E42126AF049128BC3877FE5565FBBAE9C1BA2266BE30576DDAA6C0FB7B6D0C89E47CF58F39BAB440DDF9D4A1FFE40A40AC9A717B4CCCA55BDFF51AEC"
+    }
+  },
+  {
+    "key": {
+      "group": ".gradle",
+      "name": "caches",
+      "version": "4.8.1",
+      "filepath": "gradle-api-4.8.1.jar"
+    },
+    "hash": {
+      "value": "28272F86AFBE674628277A359A9F5405DB07485D904920876B6C78F80640BAA5FC130DB90812142DAD430C7348768644137C85C29EC00EA9E3D53EE1B43EF330"
+    }
+  },
+  {
+    "key": {
+      "group": "org.jetbrains.kotlin",
+      "name": "kotlin-script-runtime",
+      "version": "1.2.51",
+      "filepath": "kotlin-script-runtime-1.2.51.jar"
+    },
+    "hash": {
+      "value": "F6F87CE3B1560FCCAAAFD0E1584AC440251DD3E874E9C1654B906B751DB98E223601F7E2F739A36FF24649FE1C939A7565DC1AEDC72F8FF19EF694F20BF94154"
+    }
+  },
+  {
+    "key": {
+      "group": "org.jetbrains",
+      "name": "annotations",
+      "version": "13.0",
+      "filepath": "annotations-13.0.jar"
+    },
+    "hash": {
+      "value": "5622D0FFE410E7272E2BB9FAE1006CAEDEB86D0C62D2D9F3929A3B3CDCDEF1963218FCF0CEDE82E95EF9F4DA3ED4A173FA055EE6E4038886376181E0423E02FF"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.errorprone",
+      "name": "javac-shaded",
+      "version": "9-dev-r4023-3",
+      "filepath": "javac-shaded-9-dev-r4023-3.jar"
+    },
+    "hash": {
+      "value": "A99C3A4DF0C3477EF7979B033566F88506BBC10BE07AAEE5758F2BF1A54E1AD44B9404E84654F8560F680E96EBF03C9E0C905EBD46BB1013224AE90AE1A53562"
+    }
+  },
+  {
+    "key": {
+      "group": "org.mockito",
+      "name": "mockito-core",
+      "version": "2.19.0",
+      "filepath": "mockito-core-2.19.0.jar"
+    },
+    "hash": {
+      "value": "083D276EF0750559FB6DF223CE1E750259DB8B9166A818D082AACB707498DFC277D79310205151DC47DCBF15FE88843E8C58C5B8BCEACED4215BD0431B8C69CD"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.code.findbugs",
+      "name": "jsr305",
+      "version": "1.3.9",
+      "filepath": "jsr305-1.3.9.jar"
+    },
+    "hash": {
+      "value": "06DA282CFD8E30D9F8CF17702B8709172B00E22B75A627A1D85F8989615B8A1A401BC25D9AEE7B14AED1D9B5DF73BF2EA8D66F9C8468D9577C29F0CCFA2CC70A"
+    }
+  },
+  {
+    "key": {
+      "group": "gradle-4.8.1-all",
+      "name": "6fmj4nezasjg1b7kkmy10xgo2",
+      "version": "gradle-4.8.1",
+      "filepath": "gradle-installation-beacon-4.8.1.jar"
+    },
+    "hash": {
+      "value": "CE824F1DD7F00C4CEFD7DFCE08FC8F39C8C4444D8C4CCB39F1D9815B6A86112B50D2656777CE893C29A1ABC6E74DDDF2429DA0E6F2D346D550BCEDFBBA3C66FD"
+    }
+  },
+  {
+    "key": {
+      "group": "org.junit.jupiter",
+      "name": "junit-jupiter-api",
+      "version": "5.2.0",
+      "filepath": "junit-jupiter-api-5.2.0.jar"
+    },
+    "hash": {
+      "value": "8B54B50E8E10B9AED8A1D65338B86D3CD28FABBA15F536DF457689B99145A451F0144C703EAA848E0BF5C7DC7719EC442B479BAC1B7D88CB9BA2CDDFFD0F1F13"
+    }
+  },
+  {
+    "key": {
+      "group": "net.bytebuddy",
+      "name": "byte-buddy",
+      "version": "1.8.10",
+      "filepath": "byte-buddy-1.8.10.jar"
+    },
+    "hash": {
+      "value": "10E7B0A58704721C23C8A8C36C0924EC80F3BCF893CDA7D184BFC4C87ED48959293FA11AEAEFBBFE0BA5FEC26392275FFBBF2669B9E3BFFB18B82CC06747C67A"
+    }
+  },
+  {
+    "key": {
+      "group": "com.google.j2objc",
+      "name": "j2objc-annotations",
+      "version": "1.1",
+      "filepath": "j2objc-annotations-1.1.jar"
+    },
+    "hash": {
+      "value": "A4A0B58FFC2D9F9B516F571BCD0AC14E4D3EEC15AACD6320A4A1A12045ACCE8C6081E8CE922C4E882221CEDB2CC266399AB468487AE9A08124D65EDC07AE30F0"
+    }
+  },
+  {
+    "key": {
+      "group": "org.jetbrains.kotlin",
+      "name": "kotlin-stdlib-jdk7",
+      "version": "1.2.51",
+      "filepath": "kotlin-stdlib-jdk7-1.2.51.jar"
+    },
+    "hash": {
+      "value": "65D91E8F84E79C0F7686DAE7A7387B4641A901766EB25DFECCC9171C94B93011538E3F8611D1A0FEF8F121C47DE92218A34A4E028B5A6AEA234DD59E951072A3"
+    }
+  },
+  {
+    "key": {
+      "group": "gradle-4.8.1-all",
+      "name": "6fmj4nezasjg1b7kkmy10xgo2",
+      "version": "gradle-4.8.1",
+      "filepath": "groovy-all-2.4.12.jar"
+    },
+    "hash": {
+      "value": "67AADF0569E80A267996AAE001127D603262E0169955AF9FF33B50654CF7B86FE00A57E2A468CCFB296C06A82B6CD1BC464F03215F509A30566E03114815037D"
+    }
+  },
+  {
+    "key": {
+      "group": "com.willowtreeapps.assertk",
+      "name": "assertk",
+      "version": "0.10",
+      "filepath": "assertk-0.10.jar"
+    },
+    "hash": {
+      "value": "6300E31137B322BA7EAF8EC5C4103DDDFAB19B53F34FF1FAF65E393733E1BDBDC7667D844529A69D370FEEC916A59291DD454BC791E1494E96524CAB7BF1685F"
+    }
+  }
+]
