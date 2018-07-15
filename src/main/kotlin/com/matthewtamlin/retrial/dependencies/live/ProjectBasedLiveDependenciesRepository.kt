@@ -21,6 +21,7 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
+import java.io.File
 import javax.inject.Inject
 
 /**
@@ -43,10 +44,10 @@ class ProjectBasedLiveDependenciesRepository @Inject constructor(
       .fileCollection { it.version != "unspecified" }
       .filter { !it.canonicalPath.startsWith(projectPath) }
       .filter { File(it.path).isFile } // Removes erroneous directories that are sometimes used as dependency files
-      .map { file -> LiveDependency(createDependencyInformation(file.path), file) }
+      .map { file -> LiveDependency(createDependencyKey(file.path), file) }
       .toSet()
 
-  private fun createDependencyInformation(path: String) = path
+  private fun createDependencyKey(path: String): DependencyKey = path
       .split(System.getProperty("file.separator"))
       .apply { if (size < 5) throw RuntimeException("Cannot create dependency information from \'$this\'.") }
       .let { it.subList(it.size - 5, it.size) }
