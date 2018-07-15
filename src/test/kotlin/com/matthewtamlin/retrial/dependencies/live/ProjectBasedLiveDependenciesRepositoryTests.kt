@@ -92,7 +92,7 @@ class ProjectBasedLiveDependenciesRepositoryTests {
     }
 
     @Test
-    @DisplayName("should return a set containing all dependencies when the project has two dependency")
+    @DisplayName("should return a set containing both dependencies when the project has two dependency")
     fun twoDependencies() {
       val dependencyKey = "com.matthew-tamlin:lib-2:1.0.0"
 
