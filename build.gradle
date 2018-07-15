@@ -48,6 +48,7 @@ dependencies {
   compileOnly gradleApi()
 
   implementation deps.kotlin.standardLibrary
+  implementation deps.kotlin.reflect // Included to resolve build warnings. Not directory used.
 
   implementation deps.rxJava
 
