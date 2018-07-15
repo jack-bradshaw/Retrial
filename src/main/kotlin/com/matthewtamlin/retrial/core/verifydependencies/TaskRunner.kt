@@ -72,7 +72,11 @@ class TaskRunner(
     val common = saved.keys.intersect(live.keys)
     val changed = common.filter { saved[it] != live[it] }.toSet()
 
-    return DependencyDiff(additional, missing, changed)
+    val changedWithHashDiffs = changed
+        .map { key -> Pair(key, HashDiff(saved[key]!!, live[key]!!)) }
+        .toMap()
+
+    return DependencyDiff(additional, missing, changedWithHashDiffs)
   }
 
   private fun handleResult(diff: DependencyDiff) = Completable.defer {
