@@ -17,6 +17,7 @@
 package com.matthewtamlin.retrial.core.verifydependencies
 
 import com.matthewtamlin.retrial.dependencies.DependencyKey
+import com.matthewtamlin.retrial.hash.Sha512Hash
 
 /**
  * The difference between the saved dependencies and the live dependencies of a project.
@@ -34,7 +35,7 @@ import com.matthewtamlin.retrial.dependencies.DependencyKey
 data class DependencyDiff(
     val additionalDependencies: Set<DependencyKey> = setOf(),
     val missingDependencies: Set<DependencyKey> = setOf(),
-    val changedDependencies: Set<DependencyKey> = setOf()
+    val changedDependencies: Map<DependencyKey, HashDiff> = mapOf()
 ) {
 
   /**
@@ -42,3 +43,8 @@ data class DependencyDiff(
    */
   val empty = additionalDependencies.isEmpty() && missingDependencies.isEmpty() && changedDependencies.isEmpty()
 }
+
+/**
+ * An expected hash and an actual hash.
+ */
+data class HashDiff(val expectedHash: Sha512Hash, val actualHash: Sha512Hash)
