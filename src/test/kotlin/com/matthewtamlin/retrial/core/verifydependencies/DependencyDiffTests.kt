@@ -38,7 +38,7 @@ class DependencyDiffTests {
       val diff = DependencyDiff(
           additionalDependencies = setOf(),
           missingDependencies = setOf(),
-          changedDependencies = setOf())
+          changedDependencies = mapOf())
 
       assertk.assert(diff.empty).isTrue()
     }
@@ -62,7 +62,8 @@ class DependencyDiffTests {
     @Test
     @DisplayName("should be false when there are changed dependencies")
     fun changedDependencies() {
-      val diff = DependencyDiff(changedDependencies = setOf(mock(DependencyKey::class.java)))
+      val diff = DependencyDiff(
+          changedDependencies = mapOf(mock(DependencyKey::class.java) to mock(HashDiff::class.java)))
 
       assertk.assert(diff.empty).isFalse()
     }
