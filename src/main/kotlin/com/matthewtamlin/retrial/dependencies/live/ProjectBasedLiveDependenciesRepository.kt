@@ -42,6 +42,7 @@ class ProjectBasedLiveDependenciesRepository @Inject constructor(
   private fun getDependenciesInConfiguration(configuration: Configuration): Set<LiveDependency> = configuration
       .fileCollection { it.version != "unspecified" }
       .filter { !it.canonicalPath.startsWith(projectPath) }
+      .filter { File(it.path).isFile } // Removes erroneous directories that are sometimes used as dependency files
       .map { file -> LiveDependency(createDependencyInformation(file.path), file) }
       .toSet()
 
