@@ -105,3 +105,6 @@ task buildRelease(dependsOn: shadowJar) {
 
 // Necessary to ensure the gradle plugin definition is included in the shadow jar
 shadowJar.dependsOn(build)
+
+// Runs the dependency check on each build
+build.finalizedBy(verifyDependencyChecksums)
