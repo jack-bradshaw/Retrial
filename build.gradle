@@ -22,6 +22,7 @@ buildscript {
 
   dependencies {
     classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.51'
+    classpath files('libs/retrial.jar')
   }
 }
 
@@ -30,6 +31,7 @@ plugins {
   id 'com.github.johnrengelman.shadow' version '2.0.2' apply true
 }
 
+apply plugin: 'retrial'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-kapt'
@@ -47,7 +49,8 @@ def deps = project.ext.dependencies
 dependencies {
   compileOnly gradleApi()
 
-  implementation deps.kotlinStandardLibrary
+  implementation deps.kotlin.standardLibrary
+  implementation deps.kotlin.reflect // Included to resolve build warnings. Not directory used.
 
   implementation deps.rxJava
 
@@ -102,3 +105,6 @@ task buildRelease(dependsOn: shadowJar) {
 
 // Necessary to ensure the gradle plugin definition is included in the shadow jar
 shadowJar.dependsOn(build)
+
+// Runs the dependency check on each build
+build.finalizedBy(verifyDependencyChecksums)
