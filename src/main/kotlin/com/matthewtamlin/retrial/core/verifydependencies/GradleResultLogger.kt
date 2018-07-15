@@ -24,6 +24,7 @@ import org.gradle.api.logging.Logger
  * A [ResultLogger] that formats logs and delegates to a [Logger].
  */
 class GradleResultLogger(private val logger: Logger) : ResultLogger {
+
   override fun logSuccess() = Completable.fromRunnable { logger.info("Dependency verification passed.") }
 
   override fun logFailureDueTo(diff: DependencyDiff) = Completable.fromRunnable {
@@ -45,14 +46,24 @@ class GradleResultLogger(private val logger: Logger) : ResultLogger {
           if (!diff.changedDependencies.isEmpty()) {
             appendln("\tChanged dependencies:")
 
-            diff.changedDependencies.forEach { appendln("\t\t${prettyFormatDependencyKey(it)}") }
+            diff.changedDependencies.forEach {
+              appendln("\t\t${prettyFormatDependencyKeyAndHashDiff(it.key, it.value)}")
+            }
           }
         }
         .toString()
         .also { logger.error(it) }
   }
 
-  private fun prettyFormatDependencyKey(key: DependencyKey):String {
+  private fun prettyFormatDependencyKey(key: DependencyKey): String {
     return "group: ${key.group}, name: ${key.name}, version: ${key.version}"
+  }
+
+  private fun prettyFormatDependencyKeyAndHashDiff(key: DependencyKey, hashDiff: HashDiff): String {
+    return "group: ${key.group}, " +
+        "name: ${key.name}, " +
+        "version: ${key.version}, " +
+        "expected SHA2-512 hash: ${hashDiff.expectedHash.value}, " +
+        "actual SHA2-512 hash: ${hashDiff.actualHash.value}"
   }
 }

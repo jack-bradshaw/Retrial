@@ -16,13 +16,13 @@
 
 package com.matthewtamlin.retrial.core.verifydependencies
 
-import com.matthewtamlin.retrial.hash.Sha512Hash
-import com.matthewtamlin.retrial.hash.Sha512HashGenerator
 import com.matthewtamlin.retrial.dependencies.DependencyKey
 import com.matthewtamlin.retrial.dependencies.live.LiveDependenciesRepository
 import com.matthewtamlin.retrial.dependencies.live.LiveDependency
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependenciesRepository
 import com.matthewtamlin.retrial.dependencies.saved.SavedDependency
+import com.matthewtamlin.retrial.hash.Sha512Hash
+import com.matthewtamlin.retrial.hash.Sha512HashGenerator
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Completable
@@ -55,6 +55,18 @@ class TaskRunnerTests {
       checksumGenerator,
       logger)
 
+  private val dependencyAHash = Sha512Hash("A")
+
+  private val dependencyBHash = Sha512Hash("B")
+
+  private val dependencyCHash = Sha512Hash("C")
+
+  private val modifiedDependencyAHash = Sha512Hash("A modified")
+
+  private val modifiedDependencyBHash = Sha512Hash("B modified")
+
+  private val modifiedDependencyCHash = Sha512Hash("C modified")
+
   private lateinit var liveDependencyA: LiveDependency
 
   private lateinit var liveDependencyB: LiveDependency
@@ -79,10 +91,6 @@ class TaskRunnerTests {
     val dependencyKeyB = mock(DependencyKey::class.java)
     val dependencyKeyC = mock(DependencyKey::class.java)
 
-    val dependencyAChecksum = Sha512Hash("A")
-    val dependencyBChecksum = Sha512Hash("B")
-    val dependencyCChecksum = Sha512Hash("C")
-
     liveDependencyA = LiveDependency(dependencyKeyA, mock(File::class.java))
     liveDependencyB = LiveDependency(dependencyKeyB, mock(File::class.java))
     liveDependencyC = LiveDependency(dependencyKeyC, mock(File::class.java))
@@ -91,20 +99,20 @@ class TaskRunnerTests {
     modifiedLiveDependencyB = LiveDependency(dependencyKeyB, mock(File::class.java))
     modifiedLiveDependencyC = LiveDependency(dependencyKeyC, mock(File::class.java))
 
-    savedDependencyA = SavedDependency(dependencyKeyA, dependencyAChecksum)
-    savedDependencyB = SavedDependency(dependencyKeyB, dependencyBChecksum)
-    savedDependencyC = SavedDependency(dependencyKeyC, dependencyCChecksum)
+    savedDependencyA = SavedDependency(dependencyKeyA, dependencyAHash)
+    savedDependencyB = SavedDependency(dependencyKeyB, dependencyBHash)
+    savedDependencyC = SavedDependency(dependencyKeyC, dependencyCHash)
 
-    whenever(checksumGenerator.generateHash(liveDependencyA.file)).thenReturn(Single.just(dependencyAChecksum))
-    whenever(checksumGenerator.generateHash(liveDependencyB.file)).thenReturn(Single.just(dependencyBChecksum))
-    whenever(checksumGenerator.generateHash(liveDependencyC.file)).thenReturn(Single.just(dependencyCChecksum))
+    whenever(checksumGenerator.generateHash(liveDependencyA.file)).thenReturn(Single.just(dependencyAHash))
+    whenever(checksumGenerator.generateHash(liveDependencyB.file)).thenReturn(Single.just(dependencyBHash))
+    whenever(checksumGenerator.generateHash(liveDependencyC.file)).thenReturn(Single.just(dependencyCHash))
 
     whenever(checksumGenerator.generateHash(modifiedLiveDependencyA.file))
-        .thenReturn(Single.just(Sha512Hash("A modified")))
+        .thenReturn(Single.just(modifiedDependencyAHash))
     whenever(checksumGenerator.generateHash(modifiedLiveDependencyB.file))
-        .thenReturn(Single.just(Sha512Hash("B modified")))
+        .thenReturn(Single.just(modifiedDependencyBHash))
     whenever(checksumGenerator.generateHash(modifiedLiveDependencyC.file))
-        .thenReturn(Single.just(Sha512Hash("C modified")))
+        .thenReturn(Single.just(modifiedDependencyCHash))
 
     whenever(logger.logSuccess()).thenReturn(Completable.complete())
     whenever(logger.logFailureDueTo(any())).thenReturn(Completable.complete())
@@ -169,7 +177,8 @@ class TaskRunnerTests {
       whenever(savedDependenciesRepository.get()).thenReturn(Single.just(setOf(savedDependencyA)))
       whenever(liveDependenciesRepository.get()).thenReturn(Single.just(setOf(modifiedLiveDependencyA)))
 
-      runTestWithFailureExpected(DependencyDiff(changedDependencies = setOf(liveDependencyA.key)))
+      runTestWithFailureExpected(DependencyDiff(
+          changedDependencies = mapOf(liveDependencyA.key to HashDiff(dependencyAHash, modifiedDependencyAHash))))
     }
 
     @Test
@@ -207,7 +216,10 @@ class TaskRunnerTests {
       whenever(liveDependenciesRepository.get())
           .thenReturn(Single.just(setOf(modifiedLiveDependencyA, modifiedLiveDependencyB)))
 
-      runTestWithFailureExpected(DependencyDiff(changedDependencies = setOf(liveDependencyA.key, liveDependencyB.key)))
+      runTestWithFailureExpected(DependencyDiff(
+          changedDependencies = mapOf(
+              liveDependencyA.key to HashDiff(dependencyAHash, modifiedDependencyAHash),
+              liveDependencyB.key to HashDiff(dependencyBHash, modifiedDependencyBHash))))
     }
 
     @Test
@@ -243,7 +255,8 @@ class TaskRunnerTests {
       whenever(savedDependenciesRepository.get()).thenReturn(Single.just(setOf(savedDependencyA)))
       whenever(liveDependenciesRepository.get()).thenReturn(Single.just(setOf(modifiedLiveDependencyA)))
 
-      runTestWithFailureExpected(DependencyDiff(changedDependencies = setOf(liveDependencyA.key)))
+      runTestWithFailureExpected(DependencyDiff(
+          changedDependencies = mapOf(liveDependencyA.key to HashDiff(dependencyAHash, modifiedDependencyAHash))))
     }
 
     @Test
@@ -259,7 +272,7 @@ class TaskRunnerTests {
           DependencyDiff(
               additionalDependencies = setOf(liveDependencyA.key),
               missingDependencies = setOf(liveDependencyB.key),
-              changedDependencies = setOf(liveDependencyC.key)))
+              changedDependencies = mapOf(liveDependencyC.key to HashDiff(dependencyCHash, modifiedDependencyCHash))))
     }
 
     private fun runTestWithSuccessExpected() {
