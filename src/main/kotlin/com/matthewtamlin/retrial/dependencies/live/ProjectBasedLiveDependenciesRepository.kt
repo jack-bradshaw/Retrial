@@ -35,7 +35,7 @@ class ProjectBasedLiveDependenciesRepository @Inject constructor(
   override fun get(): Single<Set<LiveDependency>> = Observable
       .fromIterable(project.configurations)
       .filter { it.isCanBeResolved }
-      .map(this::getDependenciesInConfiguration)
+      .map(::getDependenciesInConfiguration)
       .collectInto(HashSet<LiveDependency>()) { set, dependencies -> set.addAll(dependencies) }
       .map { it as Set<LiveDependency> }
 
