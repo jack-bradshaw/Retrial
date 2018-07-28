@@ -41,7 +41,7 @@ cp build/libs/retrial.jar yourproject/app/libs/retrial.jar
 ```
 
 Finally add the following to your Gradle build file:
-```gradle
+```groovy
 buildscript {
   dependencies {
     classpath files('libs/retrial.jar')
@@ -56,7 +56,7 @@ That’s it! You've successfully added Retrial to your project.
 
 ### Recording the dependency checksums
 To create the checksum record, run the `recordDependencyChecksums` task:
-```
+```shell
 # On MacOS/Linux
 ./gradlew recordDependencyChecksums
 
@@ -70,7 +70,7 @@ Whenever you intentionally update/add/remove a dependency, you’ll need to run 
 
 ### Verify the dependency checksums
 To verify your dependencies against the record, run the `verifyDependencyChecksums` task:
-```
+```shell
 # On MacOS/Linux
 ./gradlew verifyDependencyChecksums
 
@@ -84,7 +84,7 @@ This task compares the saved checksums against the current checksums and fails t
 - There are any checksum mismatches.
 
 By default, the task only runs when manually invoked. To automatically run the task every time the project is built, add the following to your gradle build file:
-```
+```groovy
 build.finalizedBy(verifyDependencyChecksums)
 ```
 
