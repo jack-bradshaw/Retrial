@@ -92,7 +92,7 @@ build.finalizedBy(verifyDependencyChecksums)
 Its important to recognise that Retrial doesn't provide any assurance that your dependencies are actually free from vulnerabilities. All it does is ensure that the remote dependencies haven’t changed since you added them. Retrial will not save you if you include a dependency that already has a vulnerability and *then* record the checksums. Depending on your circumstances and the acceptable level of risk, you may want to perform a full audit of your dependencies prior to using Retrial.
 
 ## What about Gradle dependency locking?
-Gradle has built in support for dependency locking, but it doesn't offer any protection against supply chain attacks. Dependency locking makes builds reproducable when using dynamic versioning, but it trusts the version declared by the repository and never performs any kind of integrity check. As such, dependency locking and Retrial serve entirely different purposes. 
+Gradle has built in support for dependency locking, but it doesn't offer any protection against supply chain attacks. Dependency locking makes builds reproducible when using dynamic versioning, but it trusts the version declared by the repository and never performs any kind of integrity check. As such, dependency locking and Retrial serve entirely different purposes. 
 
 Retrial and dependency locking can be used at the same time with no conflicts. In fact, you probably want to use dependency locking if you’re using Retrial and dynamic dependency ranges, or else your build may fail spontaneously.
 
