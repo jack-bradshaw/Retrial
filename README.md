@@ -41,7 +41,7 @@ cp build/libs/retrial.jar yourproject/app/libs/retrial.jar
 ```
 
 Finally add the following to your Gradle build file:
-```gradle
+```groovy
 buildscript {
   dependencies {
     classpath files('libs/retrial.jar')
@@ -56,7 +56,7 @@ That’s it! You've successfully added Retrial to your project.
 
 ### Recording the dependency checksums
 To create the checksum record, run the `recordDependencyChecksums` task:
-```
+```shell
 # On MacOS/Linux
 ./gradlew recordDependencyChecksums
 
@@ -70,7 +70,7 @@ Whenever you intentionally update/add/remove a dependency, you’ll need to run 
 
 ### Verify the dependency checksums
 To verify your dependencies against the record, run the `verifyDependencyChecksums` task:
-```
+```shell
 # On MacOS/Linux
 ./gradlew verifyDependencyChecksums
 
@@ -79,16 +79,14 @@ gradlew verifyDependencyChecksums
 ```
 
 This task compares the saved checksums against the current checksums and fails the build if:
-- There are any additional dependency in the build that are missing from the record.
-- There are any additional dependency in the record that are missing from the build.
+- There are any dependency in the build that are not in the record.
+- There are any dependency in the record that are not in the build.
 - There are any checksum mismatches.
 
 By default, the task only runs when manually invoked. To automatically run the task every time the project is built, add the following to your gradle build file:
-```
+```groovy
 build.finalizedBy(verifyDependencyChecksums)
 ```
-
-Retrial is very lightweight so you shouldn’t notice any effect on your build times.
 
 ## Limitations
 Its important to recognise that Retrial doesn't provide any assurance that your dependencies are actually free from vulnerabilities. All it does is ensure that the remote dependencies haven’t changed since you added them. Retrial will not save you if you include a dependency that already has a vulnerability and *then* record the checksums. Depending on your circumstances and the acceptable level of risk, you may want to perform a full audit of your dependencies prior to using Retrial.
