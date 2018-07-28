@@ -79,8 +79,8 @@ gradlew verifyDependencyChecksums
 ```
 
 This task compares the saved checksums against the current checksums and fails the build if:
-- There are any additional dependency in the build that are missing from the record.
-- There are any additional dependency in the record that are missing from the build.
+- There are any dependency in the build that are not in the record.
+- There are any dependency in the record that are not in the build.
 - There are any checksum mismatches.
 
 By default, the task only runs when manually invoked. To automatically run the task every time the project is built, add the following to your gradle build file:
