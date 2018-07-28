@@ -88,8 +88,6 @@ By default, the task only runs when manually invoked. To automatically run the t
 build.finalizedBy(verifyDependencyChecksums)
 ```
 
-Retrial is very lightweight so you shouldn’t notice any effect on your build times.
-
 ## Limitations
 Its important to recognise that Retrial doesn't provide any assurance that your dependencies are actually free from vulnerabilities. All it does is ensure that the remote dependencies haven’t changed since you added them. Retrial will not save you if you include a dependency that already has a vulnerability and *then* record the checksums. Depending on your circumstances and the acceptable level of risk, you may want to perform a full audit of your dependencies prior to using Retrial.
 
