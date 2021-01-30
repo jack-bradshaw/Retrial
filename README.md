@@ -3,6 +3,8 @@ A Gradle plugin that verifies dependency integrity at build time to guard agains
 
 Retrial was created to address the unresolved issues in Open Whisper Systems' [gradle-witness](https://github.com/signalapp/gradle-witness) plugin, and to provide a more convenient means of storing dependency checksums.
 
+**SUPPORT NOTICE: This library is now STABLE. It is no longer under active development, however pull requests from others are still being accepted.**
+
 ## Why use Retrial
 Using remote dependencies is unavoidable for any non-trivial project, but doing so creates an opportunity for supply chain attacks. By acting as a MITM or by gaining direct access to a remote repository, an adversary could replace a legitimate dependency with their own compromised version. If used correctly, such an attack would allow an adversary to inject vulnerabilities into your project at build time.
 
